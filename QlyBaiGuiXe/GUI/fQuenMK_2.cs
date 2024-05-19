@@ -27,7 +27,6 @@ namespace QlyBaiGuiXe.GUI
         private void pictureBox6_Click(object sender, EventArgs e)
         {
             this.Close();
-            txbN1.Focus();
         }
 
         private void panel7_MouseDown(object sender, MouseEventArgs e)
@@ -67,6 +66,22 @@ namespace QlyBaiGuiXe.GUI
         {
             if (String.IsNullOrEmpty(txbN4.Text))
                 txbN3.Focus();
+        }
+
+        private void btnXacNhan_Click(object sender, EventArgs e)
+        {
+            //neu dung ma xac nhan
+
+            fQuenMK_3 newForm = new fQuenMK_3();
+            this.Hide();
+            newForm.ShowDialog();
+            this.Close();
+        }
+
+        private void fQuenMK_2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //fDangNhap newForm = new fDangNhap();
+            //newForm.Show();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace QlyBaiGuiXe
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
+            txbTk.Focus();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -84,8 +85,8 @@ namespace QlyBaiGuiXe
         {
             fQuenMK_1 newform = new fQuenMK_1();
             this.Hide();
+            //this.Close();
             newform.ShowDialog();
-            this.Show();
         }
     }
 }

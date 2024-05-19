@@ -81,6 +81,7 @@
             this.btnXacNhan.TabIndex = 3;
             this.btnXacNhan.Text = "Xác nhận";
             this.btnXacNhan.UseVisualStyleBackColor = true;
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // txbN1
             // 
@@ -165,6 +166,7 @@
             this.Name = "fQuenMK_2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "fQuenMK_2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.fQuenMK_2_FormClosing);
             this.Load += new System.EventHandler(this.fQuenMK_2_Load);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();

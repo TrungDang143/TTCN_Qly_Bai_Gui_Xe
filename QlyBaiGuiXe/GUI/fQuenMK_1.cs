@@ -36,10 +36,19 @@ namespace QlyBaiGuiXe
 
         private void btnGuiMa_Click(object sender, EventArgs e)
         {
+            // neu dung thong tin o 2 o tk va email
+
+
             fQuenMK_2 newForm = new fQuenMK_2();
             this.Hide();
             newForm.ShowDialog();
-            this.Show();
+            this.Close();
+        }
+
+        private void fQuenMK_1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            fDangNhap newForm = new fDangNhap();
+            newForm.Show(); 
         }
     }
 }

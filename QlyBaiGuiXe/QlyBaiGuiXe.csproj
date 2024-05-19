@@ -32,6 +32,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>OIG4.ico</ApplicationIcon>
+  </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
@@ -133,6 +137,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\right-arrow - Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reset-password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="OIG4.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
