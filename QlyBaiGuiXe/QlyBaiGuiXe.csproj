@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +51,7 @@
   <PropertyGroup>
     <ApplicationIcon>OIG4.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
@@ -53,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\btnBaiXe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\btnBaiXe.Designer.cs">
+      <DependentUpon>btnBaiXe.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\fDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,10 +99,19 @@
     <Compile Include="GUI\fQuenMK_3.Designer.cs">
       <DependentUpon>fQuenMK_3.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\mainUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\mainUI.Designer.cs">
+      <DependentUpon>mainUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setting\BoForm.cs" />
     <Compile Include="Setting\TitleBar.cs" />
+    <EmbeddedResource Include="GUI\btnBaiXe.resx">
+      <DependentUpon>btnBaiXe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -92,6 +123,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\fQuenMK_3.resx">
       <DependentUpon>fQuenMK_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\mainUI.resx">
+      <DependentUpon>mainUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -143,6 +177,25 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="OIG4.ico" />
+    <None Include="Resources\skills - Copy.png" />
+    <None Include="Resources\pie-chart - Copy.png" />
+    <None Include="Resources\parking-ticket - Copy.png" />
+    <None Include="Resources\parking-ticket.png" />
+    <None Include="Resources\parking - Copy.png" />
+    <None Include="Resources\parking.png" />
+    <None Include="Resources\nhanvien.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

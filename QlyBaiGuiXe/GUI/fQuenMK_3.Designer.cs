@@ -41,6 +41,7 @@
             this.btnGuiMa = new System.Windows.Forms.Button();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.lbCanhBao = new System.Windows.Forms.Label();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMk2)).BeginInit();
             this.panel4.SuspendLayout();
@@ -63,7 +64,7 @@
             this.panel5.Controls.Add(this.picMk2);
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Controls.Add(this.txbMk2);
-            this.panel5.Location = new System.Drawing.Point(95, 247);
+            this.panel5.Location = new System.Drawing.Point(89, 232);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(260, 41);
             this.panel5.TabIndex = 11;
@@ -114,7 +115,7 @@
             this.panel4.Controls.Add(this.picMk1);
             this.panel4.Controls.Add(this.txbMk1);
             this.panel4.Controls.Add(this.panel3);
-            this.panel4.Location = new System.Drawing.Point(95, 169);
+            this.panel4.Location = new System.Drawing.Point(89, 154);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(260, 41);
             this.panel4.TabIndex = 12;
@@ -163,7 +164,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::QlyBaiGuiXe.Properties.Resources.reset_password;
-            this.pictureBox3.Location = new System.Drawing.Point(30, 240);
+            this.pictureBox3.Location = new System.Drawing.Point(24, 225);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(55, 55);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -173,18 +174,31 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::QlyBaiGuiXe.Properties.Resources.locked_computer;
-            this.pictureBox2.Location = new System.Drawing.Point(30, 162);
+            this.pictureBox2.Location = new System.Drawing.Point(24, 147);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(55, 55);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 14;
             this.pictureBox2.TabStop = false;
             // 
+            // lbCanhBao
+            // 
+            this.lbCanhBao.AutoSize = true;
+            this.lbCanhBao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCanhBao.ForeColor = System.Drawing.Color.Red;
+            this.lbCanhBao.Location = new System.Drawing.Point(23, 287);
+            this.lbCanhBao.Name = "lbCanhBao";
+            this.lbCanhBao.Size = new System.Drawing.Size(209, 20);
+            this.lbCanhBao.TabIndex = 19;
+            this.lbCanhBao.Text = "Mật khẩu không trùng khớp";
+            this.lbCanhBao.Visible = false;
+            // 
             // fQuenMK_3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(419, 412);
+            this.Controls.Add(this.lbCanhBao);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.label1);
@@ -224,5 +238,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox picMk2;
         private System.Windows.Forms.PictureBox picMk1;
+        private System.Windows.Forms.Label lbCanhBao;
     }
 }

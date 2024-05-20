@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QlyBaiGuiXe.GUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,7 +18,7 @@ namespace QlyBaiGuiXe
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
-            txbTk.Focus();
+            txbTk.Select();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -87,6 +88,21 @@ namespace QlyBaiGuiXe
             this.Hide();
             //this.Close();
             newform.ShowDialog();
+        }
+
+        private void fDangNhap_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            // check tai khoan
+
+            mainUI newForm = new mainUI();
+            this.Hide();
+            newForm.ShowDialog();
+            this.Close();  
         }
     }
 }
