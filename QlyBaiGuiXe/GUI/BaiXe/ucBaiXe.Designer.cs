@@ -29,22 +29,22 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txbMaVe = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txbBienSo = new System.Windows.Forms.TextBox();
-            this.lbThongTin = new System.Windows.Forms.Label();
-            this.cbbLoaiVe = new System.Windows.Forms.ComboBox();
             this.cbbLoaiXe = new System.Windows.Forms.ComboBox();
+            this.cbbLoaiVe = new System.Windows.Forms.ComboBox();
+            this.txbBienSo = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txbMaVe = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lbThongTin = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnNhapXe = new System.Windows.Forms.Button();
             this.btnXuatXe = new System.Windows.Forms.Button();
             this.dgvBaiXe = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txbTimKiem = new System.Windows.Forms.TextBox();
             this.btnTimMaVe = new System.Windows.Forms.Button();
             this.btnTimBienSo = new System.Windows.Forms.Button();
+            this.txbTimKiem = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnBTbaiXe = new System.Windows.Forms.Button();
             this.btnBTTTve = new System.Windows.Forms.Button();
@@ -75,43 +75,31 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin ";
             // 
-            // label1
+            // cbbLoaiXe
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(58, 46);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Loại vé";
+            this.cbbLoaiXe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbLoaiXe.FormattingEnabled = true;
+            this.cbbLoaiXe.Location = new System.Drawing.Point(147, 85);
+            this.cbbLoaiXe.Name = "cbbLoaiXe";
+            this.cbbLoaiXe.Size = new System.Drawing.Size(197, 30);
+            this.cbbLoaiXe.TabIndex = 2;
             // 
-            // label2
+            // cbbLoaiVe
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(58, 92);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 22);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Loại xe";
+            this.cbbLoaiVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbLoaiVe.FormattingEnabled = true;
+            this.cbbLoaiVe.Location = new System.Drawing.Point(147, 41);
+            this.cbbLoaiVe.Name = "cbbLoaiVe";
+            this.cbbLoaiVe.Size = new System.Drawing.Size(197, 30);
+            this.cbbLoaiVe.TabIndex = 2;
             // 
-            // label3
+            // txbBienSo
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(429, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 22);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Mã vé";
-            // 
-            // txbMaVe
-            // 
-            this.txbMaVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbMaVe.Location = new System.Drawing.Point(520, 39);
-            this.txbMaVe.Name = "txbMaVe";
-            this.txbMaVe.Size = new System.Drawing.Size(230, 28);
-            this.txbMaVe.TabIndex = 1;
+            this.txbBienSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbBienSo.Location = new System.Drawing.Point(520, 85);
+            this.txbBienSo.Name = "txbBienSo";
+            this.txbBienSo.Size = new System.Drawing.Size(230, 28);
+            this.txbBienSo.TabIndex = 1;
             // 
             // label4
             // 
@@ -123,13 +111,24 @@
             this.label4.TabIndex = 0;
             this.label4.Text = "Biển số";
             // 
-            // txbBienSo
+            // txbMaVe
             // 
-            this.txbBienSo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbBienSo.Location = new System.Drawing.Point(520, 85);
-            this.txbBienSo.Name = "txbBienSo";
-            this.txbBienSo.Size = new System.Drawing.Size(230, 28);
-            this.txbBienSo.TabIndex = 1;
+            this.txbMaVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbMaVe.Location = new System.Drawing.Point(520, 39);
+            this.txbMaVe.Name = "txbMaVe";
+            this.txbMaVe.ReadOnly = true;
+            this.txbMaVe.Size = new System.Drawing.Size(230, 28);
+            this.txbMaVe.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(58, 92);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(68, 22);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Loại xe";
             // 
             // lbThongTin
             // 
@@ -141,23 +140,25 @@
             this.lbThongTin.TabIndex = 0;
             this.lbThongTin.Text = "Mức giá/ thời hạn";
             // 
-            // cbbLoaiVe
+            // label3
             // 
-            this.cbbLoaiVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbLoaiVe.FormattingEnabled = true;
-            this.cbbLoaiVe.Location = new System.Drawing.Point(147, 41);
-            this.cbbLoaiVe.Name = "cbbLoaiVe";
-            this.cbbLoaiVe.Size = new System.Drawing.Size(197, 30);
-            this.cbbLoaiVe.TabIndex = 2;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(429, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(58, 22);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Mã vé";
             // 
-            // cbbLoaiXe
+            // label1
             // 
-            this.cbbLoaiXe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbLoaiXe.FormattingEnabled = true;
-            this.cbbLoaiXe.Location = new System.Drawing.Point(147, 85);
-            this.cbbLoaiXe.Name = "cbbLoaiXe";
-            this.cbbLoaiXe.Size = new System.Drawing.Size(197, 30);
-            this.cbbLoaiXe.TabIndex = 2;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(58, 46);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 22);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Loại vé";
             // 
             // btnNhapXe
             // 
@@ -203,14 +204,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tìm kiếm";
             // 
-            // txbTimKiem
-            // 
-            this.txbTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTimKiem.Location = new System.Drawing.Point(6, 31);
-            this.txbTimKiem.Name = "txbTimKiem";
-            this.txbTimKiem.Size = new System.Drawing.Size(170, 28);
-            this.txbTimKiem.TabIndex = 0;
-            // 
             // btnTimMaVe
             // 
             this.btnTimMaVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -230,6 +223,14 @@
             this.btnTimBienSo.TabIndex = 3;
             this.btnTimBienSo.Text = "Tìm theo biển số";
             this.btnTimBienSo.UseVisualStyleBackColor = true;
+            // 
+            // txbTimKiem
+            // 
+            this.txbTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbTimKiem.Location = new System.Drawing.Point(6, 31);
+            this.txbTimKiem.Name = "txbTimKiem";
+            this.txbTimKiem.Size = new System.Drawing.Size(170, 28);
+            this.txbTimKiem.TabIndex = 0;
             // 
             // groupBox3
             // 
@@ -261,6 +262,7 @@
             this.btnBTTTve.TabIndex = 5;
             this.btnBTTTve.Text = "Bảo trì thông tin vé";
             this.btnBTTTve.UseVisualStyleBackColor = true;
+            this.btnBTTTve.Click += new System.EventHandler(this.btnBTTTve_Click);
             // 
             // pictureBox1
             // 

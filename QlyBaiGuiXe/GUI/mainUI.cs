@@ -17,9 +17,24 @@ namespace QlyBaiGuiXe.GUI
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));          
+            Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));                
+            
         }
-
+        #region blur parent form
+        static Setting.blurForm f;
+        public void showBlur()
+        {
+            f = new Setting.blurForm();
+            f.Owner = this;
+            f.Location = this.Location;
+            f.Size = this.ClientSize;
+            f.Show();
+        }
+        public void closeBlur()
+        {
+            f.Close();
+        }
+        #endregion
         private void panel2_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -27,11 +42,6 @@ namespace QlyBaiGuiXe.GUI
                 Setting.TitleBar.ReleaseCapture();
                 Setting.TitleBar.SendMessage(Handle, Setting.TitleBar.WM_NCLBUTTONDOWN, Setting.TitleBar.HTCAPTION, 0);
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -42,11 +52,6 @@ namespace QlyBaiGuiXe.GUI
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void pictureBox7_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void pnl_btnBaiXe_MouseLeave(object sender, EventArgs e)
