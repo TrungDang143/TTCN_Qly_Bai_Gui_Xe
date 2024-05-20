@@ -69,12 +69,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GUI\btnBaiXe.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\btnBaiXe.Designer.cs">
-      <DependentUpon>btnBaiXe.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\fDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,13 +99,34 @@
     <Compile Include="GUI\mainUI.Designer.cs">
       <DependentUpon>mainUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\ucBaiXe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ucBaiXe.Designer.cs">
+      <DependentUpon>ucBaiXe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ucTaiKhoan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ucTaiKhoan.Designer.cs">
+      <DependentUpon>ucTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ucThongKe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ucThongKe.Designer.cs">
+      <DependentUpon>ucThongKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\ucVeXe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\ucVeXe.Designer.cs">
+      <DependentUpon>ucVeXe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setting\BoForm.cs" />
     <Compile Include="Setting\TitleBar.cs" />
-    <EmbeddedResource Include="GUI\btnBaiXe.resx">
-      <DependentUpon>btnBaiXe.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\fDangNhap.resx">
       <DependentUpon>fDangNhap.cs</DependentUpon>
     </EmbeddedResource>
@@ -126,6 +141,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\mainUI.resx">
       <DependentUpon>mainUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ucBaiXe.resx">
+      <DependentUpon>ucBaiXe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ucTaiKhoan.resx">
+      <DependentUpon>ucTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ucThongKe.resx">
+      <DependentUpon>ucThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\ucVeXe.resx">
+      <DependentUpon>ucVeXe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -177,6 +204,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="OIG4.ico" />
+    <None Include="Resources\search.png" />
     <None Include="Resources\skills - Copy.png" />
     <None Include="Resources\pie-chart - Copy.png" />
     <None Include="Resources\parking-ticket - Copy.png" />

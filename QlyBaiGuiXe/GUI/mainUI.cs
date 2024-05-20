@@ -12,6 +12,7 @@ namespace QlyBaiGuiXe.GUI
 {
     public partial class mainUI : Form
     {
+        string nameChose = string.Empty;
         public mainUI()
         {
             InitializeComponent();
@@ -43,19 +44,129 @@ namespace QlyBaiGuiXe.GUI
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void pictureBox7_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void pnl_btnBaiXe_MouseLeave(object sender, EventArgs e)
         {
+            if (sender is Panel)
+            {
+                Panel panel = sender as Panel;
+                panel.BackColor = System.Drawing.Color.DarkSlateBlue;
+            }
+            else if (sender is Label)
+            {
+                Label lb = sender as Label;
+                Panel pnl = lb.Parent as Panel;
+                pnl.BackColor = System.Drawing.Color.DarkSlateBlue;
+            }
+            else if (sender is PictureBox)
+            {
+                PictureBox pic = sender as PictureBox;
+                Panel pnl = pic.Parent as Panel;
+                pnl.BackColor = System.Drawing.Color.DarkSlateBlue;
+            }
 
+            if (nameChose.Equals("ucBaiXe")){
+                pnl_btnBaiXe.BackColor = System.Drawing.Color.MidnightBlue;
+            }
+            else if (nameChose.Equals("ucVeXe"))
+            {
+                pnl_btnVeXe.BackColor = System.Drawing.Color.MidnightBlue;
+            }
+            else if (nameChose.Equals("ucThongKe"))
+            {
+                pnl_btnThongKe.BackColor = System.Drawing.Color.MidnightBlue;
+            }
+            else if (nameChose.Equals("ucTaiKhoan"))
+            {
+                pnl_btnTaiKhoan.BackColor = System.Drawing.Color.MidnightBlue;
+            }
+        }
+
+        private void pnl_btnBaiXe_MouseMove(object sender, MouseEventArgs e)
+        {
+            if(sender is Panel)
+            {
+                Panel panel = sender as Panel;
+                panel.BackColor = System.Drawing.Color.MidnightBlue;
+            }
+            else if(sender is Label)
+            {
+                Label lb = sender as Label;
+                Panel pnl = lb.Parent as Panel;
+                pnl.BackColor = System.Drawing.Color.MidnightBlue;
+            }
+            else if (sender is PictureBox)
+            {
+                PictureBox pic = sender as PictureBox;
+                Panel pnl = pic.Parent as Panel;
+                pnl.BackColor = System.Drawing.Color.MidnightBlue;
+
+            }
+        }
+
+        private void resetSelect()
+        {
+            pnl_btnBaiXe.BackColor = System.Drawing.Color.DarkSlateBlue;
+            pnl_btnVeXe.BackColor = System.Drawing.Color.DarkSlateBlue;
+            pnl_btnThongKe.BackColor = System.Drawing.Color.DarkSlateBlue;
+            pnl_btnTaiKhoan.BackColor = System.Drawing.Color.DarkSlateBlue;
+
+            pnlMain.Controls.Clear();
+        }
+
+
+        private void mainUI_Load(object sender, EventArgs e)
+        {
+            resetSelect();
+            pnl_btnBaiXe_Click(pnl_btnBaiXe, EventArgs.Empty);
+        }
+
+        private void pnl_btnBaiXe_Click(object sender, EventArgs e)
+        {
+            nameChose = "ucBaiXe";
+
+            resetSelect();
+            pnl_btnBaiXe.BackColor = System.Drawing.Color.MidnightBlue;
+
+            ucBaiXe newUC = new ucBaiXe();
+            pnlMain.Controls.Add(newUC);
+        }
+
+        private void pnl_btnVeXe_Click(object sender, EventArgs e)
+        {
+            nameChose = "ucVeXe";
+
+            resetSelect();
+            pnl_btnVeXe.BackColor = System.Drawing.Color.MidnightBlue;
+
+            ucVeXe newUC = new ucVeXe();
+            pnlMain.Controls.Add(newUC);
+        }
+
+        private void pnl_btnThongKe_Click(object sender, EventArgs e)
+        {
+            nameChose = "ucThongKe";
+
+            resetSelect();
+            pnl_btnThongKe.BackColor = System.Drawing.Color.MidnightBlue;
+
+            ucThongKe newUC = new ucThongKe();
+            pnlMain.Controls.Add(newUC);
+        }
+
+        private void pnl_btnTaiKhoan_Click(object sender, EventArgs e)
+        {
+            nameChose = "ucTaiKhoan";
+
+            resetSelect();
+            pnl_btnTaiKhoan.BackColor = System.Drawing.Color.MidnightBlue;
+
+            ucTaiKhoan newUC = new ucTaiKhoan();
+            pnlMain.Controls.Add(newUC);
         }
     }
 }

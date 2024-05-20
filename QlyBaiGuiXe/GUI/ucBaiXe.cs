@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QlyBaiGuiXe.GUI
 {
-    public partial class btnBaiXe : UserControl
+    public partial class ucBaiXe : UserControl
     {
-        public btnBaiXe()
+        public ucBaiXe()
         {
             InitializeComponent();
         }
