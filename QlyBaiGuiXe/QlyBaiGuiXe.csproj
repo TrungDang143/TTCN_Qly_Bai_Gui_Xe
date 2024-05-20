@@ -117,16 +117,28 @@
     <Compile Include="GUI\BaiXe\ucBaiXe.Designer.cs">
       <DependentUpon>ucBaiXe.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ucTaiKhoan.cs">
+    <Compile Include="GUI\TaiKhoan\fDoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TaiKhoan\fDoiMatKhau.Designer.cs">
+      <DependentUpon>fDoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TaiKhoan\fQlyNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\TaiKhoan\fQlyNhanVien.Designer.cs">
+      <DependentUpon>fQlyNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\TaiKhoan\ucTaiKhoan.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\ucTaiKhoan.Designer.cs">
+    <Compile Include="GUI\TaiKhoan\ucTaiKhoan.Designer.cs">
       <DependentUpon>ucTaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ucThongKe.cs">
+    <Compile Include="GUI\ThongKe\ucThongKe.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\ucThongKe.Designer.cs">
+    <Compile Include="GUI\ThongKe\ucThongKe.Designer.cs">
       <DependentUpon>ucThongKe.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\VeXe\fBTbangGia.cs">
@@ -181,10 +193,16 @@
     <EmbeddedResource Include="GUI\BaiXe\ucBaiXe.resx">
       <DependentUpon>ucBaiXe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ucTaiKhoan.resx">
+    <EmbeddedResource Include="GUI\TaiKhoan\fDoiMatKhau.resx">
+      <DependentUpon>fDoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TaiKhoan\fQlyNhanVien.resx">
+      <DependentUpon>fQlyNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\TaiKhoan\ucTaiKhoan.resx">
       <DependentUpon>ucTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ucThongKe.resx">
+    <EmbeddedResource Include="GUI\ThongKe\ucThongKe.resx">
       <DependentUpon>ucThongKe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\VeXe\fBTbangGia.resx">
@@ -249,6 +267,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="OIG4.ico" />
+    <None Include="Resources\change.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\skills - Copy.png" />
     <None Include="Resources\pie-chart - Copy.png" />
