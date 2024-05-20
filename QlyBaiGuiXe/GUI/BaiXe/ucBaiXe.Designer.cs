@@ -44,16 +44,16 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnTimMaVe = new System.Windows.Forms.Button();
             this.btnTimBienSo = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txbTimKiem = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnBTbaiXe = new System.Windows.Forms.Button();
             this.btnBTTTve = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBaiXe)).BeginInit();
             this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -113,6 +113,7 @@
             // 
             // txbMaVe
             // 
+            this.txbMaVe.BackColor = System.Drawing.Color.Lavender;
             this.txbMaVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbMaVe.Location = new System.Drawing.Point(520, 39);
             this.txbMaVe.Name = "txbMaVe";
@@ -169,6 +170,7 @@
             this.btnNhapXe.TabIndex = 1;
             this.btnNhapXe.Text = "Nhập xe";
             this.btnNhapXe.UseVisualStyleBackColor = true;
+            this.btnNhapXe.Click += new System.EventHandler(this.btnNhapXe_Click);
             // 
             // btnXuatXe
             // 
@@ -179,6 +181,7 @@
             this.btnXuatXe.TabIndex = 1;
             this.btnXuatXe.Text = "Xuất xe";
             this.btnXuatXe.UseVisualStyleBackColor = true;
+            this.btnXuatXe.Click += new System.EventHandler(this.btnXuatXe_Click);
             // 
             // dgvBaiXe
             // 
@@ -224,12 +227,22 @@
             this.btnTimBienSo.Text = "Tìm theo biển số";
             this.btnTimBienSo.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::QlyBaiGuiXe.Properties.Resources.search;
+            this.pictureBox1.Location = new System.Drawing.Point(182, 29);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // txbTimKiem
             // 
             this.txbTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTimKiem.Location = new System.Drawing.Point(6, 31);
+            this.txbTimKiem.Location = new System.Drawing.Point(13, 31);
             this.txbTimKiem.Name = "txbTimKiem";
-            this.txbTimKiem.Size = new System.Drawing.Size(170, 28);
+            this.txbTimKiem.Size = new System.Drawing.Size(163, 28);
             this.txbTimKiem.TabIndex = 0;
             // 
             // groupBox3
@@ -252,6 +265,7 @@
             this.btnBTbaiXe.TabIndex = 4;
             this.btnBTbaiXe.Text = "Bảo trì bãi xe";
             this.btnBTbaiXe.UseVisualStyleBackColor = true;
+            this.btnBTbaiXe.Click += new System.EventHandler(this.btnBTbaiXe_Click);
             // 
             // btnBTTTve
             // 
@@ -263,16 +277,6 @@
             this.btnBTTTve.Text = "Bảo trì thông tin vé";
             this.btnBTTTve.UseVisualStyleBackColor = true;
             this.btnBTTTve.Click += new System.EventHandler(this.btnBTTTve_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::QlyBaiGuiXe.Properties.Resources.search;
-            this.pictureBox1.Location = new System.Drawing.Point(182, 29);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // ucBaiXe
             // 
@@ -291,8 +295,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvBaiXe)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

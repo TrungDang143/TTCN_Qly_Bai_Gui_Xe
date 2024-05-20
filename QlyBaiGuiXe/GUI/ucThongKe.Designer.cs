@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbVeThang = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnNgay = new System.Windows.Forms.Button();
+            this.btnHN = new System.Windows.Forms.Button();
             this.btnTuan = new System.Windows.Forms.Button();
             this.btnThang = new System.Windows.Forms.Button();
             this.btnNam = new System.Windows.Forms.Button();
             this.btnVeThang = new System.Windows.Forms.Button();
             this.btnVeLuot = new System.Windows.Forms.Button();
             this.btnAll = new System.Windows.Forms.Button();
+            this.dtpk = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // lbVeThang
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(25, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(374, 22);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Số lượng vé tháng đăng ký mới (trong tháng): ";
+            this.lbVeThang.AutoSize = true;
+            this.lbVeThang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVeThang.Location = new System.Drawing.Point(25, 54);
+            this.lbVeThang.Name = "lbVeThang";
+            this.lbVeThang.Size = new System.Drawing.Size(256, 22);
+            this.lbVeThang.TabIndex = 0;
+            this.lbVeThang.Text = "Số lượng vé tháng đăng ký mới";
             // 
             // dataGridView1
             // 
@@ -60,21 +61,21 @@
             this.dataGridView1.Size = new System.Drawing.Size(1263, 608);
             this.dataGridView1.TabIndex = 1;
             // 
-            // btnNgay
+            // btnHN
             // 
-            this.btnNgay.BackColor = System.Drawing.Color.Lavender;
-            this.btnNgay.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.btnNgay.FlatAppearance.BorderSize = 2;
-            this.btnNgay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNgay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNgay.ForeColor = System.Drawing.Color.Black;
-            this.btnNgay.Location = new System.Drawing.Point(29, 114);
-            this.btnNgay.Name = "btnNgay";
-            this.btnNgay.Size = new System.Drawing.Size(102, 37);
-            this.btnNgay.TabIndex = 2;
-            this.btnNgay.Text = "Ngày";
-            this.btnNgay.UseVisualStyleBackColor = false;
-            this.btnNgay.Click += new System.EventHandler(this.btnNgay_Click);
+            this.btnHN.BackColor = System.Drawing.Color.Lavender;
+            this.btnHN.FlatAppearance.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.btnHN.FlatAppearance.BorderSize = 2;
+            this.btnHN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHN.ForeColor = System.Drawing.Color.Black;
+            this.btnHN.Location = new System.Drawing.Point(29, 114);
+            this.btnHN.Name = "btnHN";
+            this.btnHN.Size = new System.Drawing.Size(102, 37);
+            this.btnHN.TabIndex = 2;
+            this.btnHN.Text = "Hôm nay";
+            this.btnHN.UseVisualStyleBackColor = false;
+            this.btnHN.Click += new System.EventHandler(this.btnNgay_Click);
             // 
             // btnTuan
             // 
@@ -172,19 +173,30 @@
             this.btnAll.UseVisualStyleBackColor = false;
             this.btnAll.Click += new System.EventHandler(this.btnAll_Click);
             // 
+            // dtpk
+            // 
+            this.dtpk.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpk.Location = new System.Drawing.Point(514, 115);
+            this.dtpk.Name = "dtpk";
+            this.dtpk.Size = new System.Drawing.Size(382, 28);
+            this.dtpk.TabIndex = 5;
+            this.dtpk.ValueChanged += new System.EventHandler(this.dtpk_ValueChanged);
+            // 
             // ucThongKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dtpk);
             this.Controls.Add(this.btnVeThang);
             this.Controls.Add(this.btnAll);
             this.Controls.Add(this.btnVeLuot);
             this.Controls.Add(this.btnNam);
             this.Controls.Add(this.btnThang);
             this.Controls.Add(this.btnTuan);
-            this.Controls.Add(this.btnNgay);
+            this.Controls.Add(this.btnHN);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbVeThang);
             this.Name = "ucThongKe";
             this.Size = new System.Drawing.Size(1328, 811);
             this.Load += new System.EventHandler(this.ucThongKe_Load);
@@ -196,14 +208,15 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbVeThang;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button btnNgay;
+        private System.Windows.Forms.Button btnHN;
         private System.Windows.Forms.Button btnTuan;
         private System.Windows.Forms.Button btnThang;
         private System.Windows.Forms.Button btnNam;
         private System.Windows.Forms.Button btnVeThang;
         private System.Windows.Forms.Button btnVeLuot;
         private System.Windows.Forms.Button btnAll;
+        private System.Windows.Forms.DateTimePicker dtpk;
     }
 }

@@ -21,7 +21,7 @@ namespace QlyBaiGuiXe.GUI
 
         private void resetFilterNgay()
         {
-            this.btnNgay.BackColor = System.Drawing.Color.Lavender;
+            this.btnHN.BackColor = System.Drawing.Color.Lavender;
             this.btnThang.BackColor = System.Drawing.Color.Lavender;
             this.btnNam.BackColor = System.Drawing.Color.Lavender;
             this.btnTuan.BackColor = System.Drawing.Color.Lavender;
@@ -35,8 +35,17 @@ namespace QlyBaiGuiXe.GUI
 
         }
 
+        private void getSoVeThangMoi()
+        {
+            lbVeThang.Text = "Số lượng vé tháng đăng ký trong tháng " + dtpk.Value.ToString("MM/yyyy") + ": ";
+        }
         private void ucThongKe_Load(object sender, EventArgs e)
         {
+            getSoVeThangMoi();
+
+            //dtpk.Format = DateTimePickerFormat.Custom;
+            //dtpk.CustomFormat = "dd/MM/yyyy";
+
             locNgay = "ngay";
             locLoai = "all";
         }
@@ -44,7 +53,7 @@ namespace QlyBaiGuiXe.GUI
         private void btnNgay_Click(object sender, EventArgs e)
         {
             resetFilterNgay();
-            this.btnNgay.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnHN.BackColor = System.Drawing.Color.LightSteelBlue;
             locNgay = "ngay";
 
             //xuly
@@ -102,6 +111,11 @@ namespace QlyBaiGuiXe.GUI
             locLoai = "veThang";
 
             //xuly
+        }
+
+        private void dtpk_ValueChanged(object sender, EventArgs e)
+        {
+            getSoVeThangMoi();
         }
     }
 }

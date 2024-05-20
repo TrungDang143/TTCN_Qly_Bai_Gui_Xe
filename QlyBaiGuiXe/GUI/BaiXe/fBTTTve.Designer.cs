@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel7 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txbLoaiVe = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.btnHuy = new System.Windows.Forms.Button();
             this.dtpkTGN = new System.Windows.Forms.DateTimePicker();
             this.dtpkTGX = new System.Windows.Forms.DateTimePicker();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.cbbLoaiXe = new System.Windows.Forms.ComboBox();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
@@ -60,6 +60,17 @@
             this.panel7.TabIndex = 11;
             this.panel7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel7_MouseDown);
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::QlyBaiGuiXe.Properties.Resources.right_arrow___Copy;
+            this.pictureBox6.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -72,6 +83,7 @@
             // 
             // txbLoaiVe
             // 
+            this.txbLoaiVe.BackColor = System.Drawing.Color.Lavender;
             this.txbLoaiVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbLoaiVe.Location = new System.Drawing.Point(142, 168);
             this.txbLoaiVe.Name = "txbLoaiVe";
@@ -91,6 +103,7 @@
             // 
             // txbMaVe
             // 
+            this.txbMaVe.BackColor = System.Drawing.Color.Lavender;
             this.txbMaVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbMaVe.Location = new System.Drawing.Point(142, 122);
             this.txbMaVe.Name = "txbMaVe";
@@ -148,6 +161,7 @@
             // 
             // txbMucPhi
             // 
+            this.txbMucPhi.BackColor = System.Drawing.Color.Lavender;
             this.txbMucPhi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbMucPhi.Location = new System.Drawing.Point(142, 304);
             this.txbMucPhi.Name = "txbMucPhi";
@@ -213,17 +227,6 @@
             this.dtpkTGX.Name = "dtpkTGX";
             this.dtpkTGX.Size = new System.Drawing.Size(229, 28);
             this.dtpkTGX.TabIndex = 21;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::QlyBaiGuiXe.Properties.Resources.right_arrow___Copy;
-            this.pictureBox6.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             // 
             // cbbLoaiXe
             // 

@@ -69,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\BaiXe\fBTbaiXe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\BaiXe\fBTbaiXe.Designer.cs">
+      <DependentUpon>fBTbaiXe.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\BaiXe\fBTTTve.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -123,10 +129,22 @@
     <Compile Include="GUI\ucThongKe.Designer.cs">
       <DependentUpon>ucThongKe.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\ucVeXe.cs">
+    <Compile Include="GUI\VeXe\fBTbangGia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\VeXe\fBTbangGia.Designer.cs">
+      <DependentUpon>fBTbangGia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\VeXe\fBTTTveThang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\VeXe\fBTTTveThang.Designer.cs">
+      <DependentUpon>fBTTTveThang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\VeXe\ucVeXe.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\ucVeXe.Designer.cs">
+    <Compile Include="GUI\VeXe\ucVeXe.Designer.cs">
       <DependentUpon>ucVeXe.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -139,6 +157,9 @@
     </Compile>
     <Compile Include="Setting\BoForm.cs" />
     <Compile Include="Setting\TitleBar.cs" />
+    <EmbeddedResource Include="GUI\BaiXe\fBTbaiXe.resx">
+      <DependentUpon>fBTbaiXe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\BaiXe\fBTTTve.resx">
       <DependentUpon>fBTTTve.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,7 +187,13 @@
     <EmbeddedResource Include="GUI\ucThongKe.resx">
       <DependentUpon>ucThongKe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\ucVeXe.resx">
+    <EmbeddedResource Include="GUI\VeXe\fBTbangGia.resx">
+      <DependentUpon>fBTbangGia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\VeXe\fBTTTveThang.resx">
+      <DependentUpon>fBTTTveThang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\VeXe\ucVeXe.resx">
       <DependentUpon>ucVeXe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

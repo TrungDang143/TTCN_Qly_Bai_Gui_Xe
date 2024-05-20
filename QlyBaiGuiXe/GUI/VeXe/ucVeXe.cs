@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QlyBaiGuiXe.GUI.VeXe;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +26,8 @@ namespace QlyBaiGuiXe.GUI
         private void ucVeXe_Load(object sender, EventArgs e)
         {
             dtpk.Text = DateTime.Now.AddMonths(1).ToString();
+            dtpk.Format = DateTimePickerFormat.Custom;
+            dtpk.CustomFormat = "dd/MM/yyyy";
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -46,6 +49,28 @@ namespace QlyBaiGuiXe.GUI
 
                 MessageBox.Show("Thong bao");
             }
+        }
+
+        private void btnBTveThang_Click(object sender, EventArgs e)
+        {
+            Panel pnl = this.Parent as Panel;
+            mainUI mainForm = pnl.Parent as mainUI;
+
+            mainForm.showBlur();
+            fBTTTveThang newF = new fBTTTveThang();
+            newF.ShowDialog();
+            mainForm.closeBlur();
+        }
+
+        private void btnBTbangGia_Click(object sender, EventArgs e)
+        {
+            Panel pnl = this.Parent as Panel;
+            mainUI mainForm = pnl.Parent as mainUI;
+
+            mainForm.showBlur();
+            fBTbangGia newF = new fBTbangGia();
+            newF.ShowDialog();
+            mainForm.closeBlur();
         }
     }
 }

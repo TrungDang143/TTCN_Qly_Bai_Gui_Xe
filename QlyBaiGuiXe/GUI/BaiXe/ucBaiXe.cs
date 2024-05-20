@@ -32,5 +32,32 @@ namespace QlyBaiGuiXe.GUI
 
             mainForm.closeBlur();
         }
+
+        private void btnBTbaiXe_Click(object sender, EventArgs e)
+        {
+            Panel mainPanel = this.Parent as Panel;
+            mainUI mainForm = mainPanel.Parent as mainUI;
+
+            mainForm.showBlur();
+            fBTbaiXe newForm = new fBTbaiXe();
+            newForm.ShowDialog();
+
+            mainForm.closeBlur();
+        }
+
+        private void btnNhapXe_Click(object sender, EventArgs e)
+        {
+            //xu ly sql
+
+            MessageBox.Show("Nhập xe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnXuatXe_Click(object sender, EventArgs e)
+        {
+            //xu ly sql
+
+            MessageBox.Show("Xuất xe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
     }
 }
