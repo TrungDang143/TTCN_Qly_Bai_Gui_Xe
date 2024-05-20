@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QlyBaiGuiXe.GUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace QlyBaiGuiXe
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fDangNhap());
+            Application.Run(new mainUI());
         }
     }
 }
