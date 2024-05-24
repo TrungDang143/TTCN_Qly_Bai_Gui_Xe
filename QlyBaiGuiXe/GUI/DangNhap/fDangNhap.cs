@@ -99,10 +99,11 @@ namespace QlyBaiGuiXe
         {
             // check tai khoan
 
-            mainUI newForm = new mainUI();
+            mainUI newForm = new mainUI(txbTk.Text);
             this.Hide();
             newForm.ShowDialog();
             this.Close();  
+            
         }
     }
 }
