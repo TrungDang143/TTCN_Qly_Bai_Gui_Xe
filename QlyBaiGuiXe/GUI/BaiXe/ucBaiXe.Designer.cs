@@ -192,6 +192,7 @@
             this.dgvBaiXe.RowTemplate.Height = 24;
             this.dgvBaiXe.Size = new System.Drawing.Size(1028, 567);
             this.dgvBaiXe.TabIndex = 2;
+            this.dgvBaiXe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBaiXe_CellContentClick);
             // 
             // groupBox2
             // 
@@ -315,7 +316,6 @@
         private System.Windows.Forms.ComboBox cbbLoaiXe;
         private System.Windows.Forms.Button btnNhapXe;
         private System.Windows.Forms.Button btnXuatXe;
-        private System.Windows.Forms.DataGridView dgvBaiXe;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txbTimKiem;
@@ -324,5 +324,6 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button btnBTbaiXe;
         private System.Windows.Forms.Button btnBTTTve;
+        private System.Windows.Forms.DataGridView dgvBaiXe;
     }
 }
