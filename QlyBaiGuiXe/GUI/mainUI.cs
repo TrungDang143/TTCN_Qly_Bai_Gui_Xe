@@ -13,12 +13,14 @@ namespace QlyBaiGuiXe.GUI
     public partial class mainUI : Form
     {
         string nameChose = string.Empty;
-        public mainUI()
+        string maNV;
+        
+        public mainUI(string s)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));                
-            
+            maNV = s;
         }
         #region blur parent form
         static Setting.blurForm f;
@@ -128,6 +130,7 @@ namespace QlyBaiGuiXe.GUI
         {
             resetSelect();
             pnl_btnBaiXe_Click(pnl_btnBaiXe, EventArgs.Empty);
+            lbMaNV.Text = maNV;
         }
 
         private void pnl_btnBaiXe_Click(object sender, EventArgs e)
@@ -172,6 +175,16 @@ namespace QlyBaiGuiXe.GUI
 
             ucTaiKhoan newUC = new ucTaiKhoan();
             pnlMain.Controls.Add(newUC);
+        }
+
+        private void pnlMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pnl_btnBaiXe_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
