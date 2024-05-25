@@ -43,7 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbMaNV = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
@@ -206,7 +206,6 @@
             this.pnl_btnBaiXe.Size = new System.Drawing.Size(154, 110);
             this.pnl_btnBaiXe.TabIndex = 2;
             this.pnl_btnBaiXe.Click += new System.EventHandler(this.pnl_btnBaiXe_Click);
-            //this.pnl_btnBaiXe.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_btnBaiXe_Paint);
             this.pnl_btnBaiXe.MouseLeave += new System.EventHandler(this.pnl_btnBaiXe_MouseLeave);
             this.pnl_btnBaiXe.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_btnBaiXe_MouseMove);
             // 
@@ -239,23 +238,34 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.lbMaNV);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(148, 155);
             this.panel3.TabIndex = 1;
             // 
-            // label1
+            // lbMaNV
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(18, 94);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(108, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Mã nhân viên";
+            this.lbMaNV.AutoSize = true;
+            this.lbMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMaNV.ForeColor = System.Drawing.Color.White;
+            this.lbMaNV.Location = new System.Drawing.Point(18, 94);
+            this.lbMaNV.Name = "lbMaNV";
+            this.lbMaNV.Size = new System.Drawing.Size(108, 20);
+            this.lbMaNV.TabIndex = 1;
+            this.lbMaNV.Text = "Mã nhân viên";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::QlyBaiGuiXe.Properties.Resources.nhanvien;
+            this.pictureBox1.Location = new System.Drawing.Point(47, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pnl_btnTaiKhoan_Click);
             // 
             // pictureBox1
             // 
@@ -348,7 +358,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbMaNV;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;

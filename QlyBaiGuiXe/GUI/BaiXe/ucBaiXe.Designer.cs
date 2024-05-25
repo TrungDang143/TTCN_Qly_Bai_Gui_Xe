@@ -113,11 +113,10 @@
             // 
             // txbMaVe
             // 
-            this.txbMaVe.BackColor = System.Drawing.Color.Lavender;
+            this.txbMaVe.BackColor = System.Drawing.SystemColors.Control;
             this.txbMaVe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbMaVe.Location = new System.Drawing.Point(520, 39);
             this.txbMaVe.Name = "txbMaVe";
-            this.txbMaVe.ReadOnly = true;
             this.txbMaVe.Size = new System.Drawing.Size(230, 28);
             this.txbMaVe.TabIndex = 1;
             // 
