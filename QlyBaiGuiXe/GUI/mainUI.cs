@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QlyBaiGuiXe.MoHinhDuLieu;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,14 +14,15 @@ namespace QlyBaiGuiXe.GUI
     public partial class mainUI : Form
     {
         string nameChose = string.Empty;
-        string maNV;
-        
-        public mainUI(string s)
+        NhanVien NV;
+        public bool isClose = true;
+
+        public mainUI(NhanVien nv)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));                
-            maNV = s;
+            NV = nv;
         }
         #region blur parent form
         static Setting.blurForm f;
@@ -48,7 +50,8 @@ namespace QlyBaiGuiXe.GUI
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            isClose = true;
+            this.Close();
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -130,7 +133,10 @@ namespace QlyBaiGuiXe.GUI
         {
             resetSelect();
             pnl_btnBaiXe_Click(pnl_btnBaiXe, EventArgs.Empty);
-            lbMaNV.Text = maNV;
+            lbMaNV.Text = NV.HoTen + "\n" + NV.MaNv;
+            int x = (panel4.Width - lbMaNV.Width) / 2;
+            int y = (panel4.Height - lbMaNV.Height) / 2 ;
+            lbMaNV.Location = new Point(x, y);
         }
 
         private void pnl_btnBaiXe_Click(object sender, EventArgs e)
@@ -183,6 +189,24 @@ namespace QlyBaiGuiXe.GUI
         }
 
         private void pnl_btnBaiXe_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mainUI_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if (isClose)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void lbMaNV_Click(object sender, EventArgs e)
         {
 
         }
