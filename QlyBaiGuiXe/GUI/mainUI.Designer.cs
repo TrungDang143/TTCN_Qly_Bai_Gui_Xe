@@ -206,7 +206,6 @@
             this.pnl_btnBaiXe.Size = new System.Drawing.Size(154, 110);
             this.pnl_btnBaiXe.TabIndex = 2;
             this.pnl_btnBaiXe.Click += new System.EventHandler(this.pnl_btnBaiXe_Click);
-            this.pnl_btnBaiXe.Paint += new System.Windows.Forms.PaintEventHandler(this.pnl_btnBaiXe_Paint);
             this.pnl_btnBaiXe.MouseLeave += new System.EventHandler(this.pnl_btnBaiXe_MouseLeave);
             this.pnl_btnBaiXe.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pnl_btnBaiXe_MouseMove);
             // 
@@ -268,6 +267,16 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pnl_btnTaiKhoan_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::QlyBaiGuiXe.Properties.Resources.nhanvien;
+            this.pictureBox1.Location = new System.Drawing.Point(47, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ControlLight;
@@ -307,7 +316,6 @@
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(1328, 811);
             this.pnlMain.TabIndex = 1;
-            this.pnlMain.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlMain_Paint);
             // 
             // mainUI
             // 
