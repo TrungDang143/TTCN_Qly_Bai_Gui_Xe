@@ -192,7 +192,7 @@
             this.dgvBaiXe.RowTemplate.Height = 24;
             this.dgvBaiXe.Size = new System.Drawing.Size(1028, 567);
             this.dgvBaiXe.TabIndex = 2;
-            this.dgvBaiXe.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBaiXe_CellContentClick);
+            this.dgvBaiXe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBaiXe_CellClick);
             // 
             // groupBox2
             // 

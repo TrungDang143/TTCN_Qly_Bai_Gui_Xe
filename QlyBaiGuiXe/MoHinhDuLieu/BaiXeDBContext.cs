@@ -8,13 +8,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace QlyBaiGuiXe.MoHinhDuLieu
 {
-    public partial class testBaiXeContext : DbContext
+    public partial class BaiXeDBContext : DbContext
     {
-        public testBaiXeContext()
+        public BaiXeDBContext()
         {
         }
 
-        public testBaiXeContext(DbContextOptions<testBaiXeContext> options)
+        public BaiXeDBContext(DbContextOptions<BaiXeDBContext> options)
             : base(options)
         {
         }
@@ -38,7 +38,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-JUT8TOT\\SQLEXPRESS;Initial Catalog=testBaiXe;Integrated Security=True;TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-JUT8TOT\\SQLEXPRESS;Initial Catalog=BaiXeDB;Integrated Security=True");
             }
         }
 
@@ -47,7 +47,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<BaiXe>(entity =>
             {
                 entity.HasKey(e => e.MaBaiXe)
-                    .HasName("PK__BaiXe__FA021C43BD822EA8");
+                    .HasName("PK__BaiXe__FA021C43EC712E5E");
 
                 entity.Property(e => e.MaBaiXe)
                     .HasColumnName("maBaiXe")
@@ -66,7 +66,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<BangGia>(entity =>
             {
                 entity.HasKey(e => new { e.MaLoaiXe, e.MaLoaiVe })
-                    .HasName("PK__BangGia__1D0DCD9F5B861F0B");
+                    .HasName("PK__BangGia__1D0DCD9F527BDF25");
 
                 entity.Property(e => e.MaLoaiXe)
                     .HasColumnName("maLoaiXe")
@@ -98,7 +98,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<ChucVu>(entity =>
             {
                 entity.HasKey(e => e.MaCv)
-                    .HasName("PK__ChucVu__7A3E0CF0C6EB8767");
+                    .HasName("PK__ChucVu__7A3E0CF0F22130A4");
 
                 entity.Property(e => e.MaCv)
                     .HasColumnName("maCV")
@@ -115,7 +115,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<GiaQuaDem>(entity =>
             {
                 entity.HasKey(e => e.MaLoaiXe)
-                    .HasName("PK__GiaQuaDe__7AA7B7E59048F2D5");
+                    .HasName("PK__GiaQuaDe__7AA7B7E542181244");
 
                 entity.Property(e => e.MaLoaiXe)
                     .HasColumnName("maLoaiXe")
@@ -135,13 +135,9 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<HoaDon>(entity =>
             {
                 entity.HasKey(e => e.MaHd)
-                    .HasName("PK__HoaDon__7A3E1486CF9BED50");
+                    .HasName("PK__HoaDon__7A3E148608F80F54");
 
-                entity.Property(e => e.MaHd)
-                    .HasColumnName("maHD")
-                    .HasMaxLength(10)
-                    .IsUnicode(false)
-                    .IsFixedLength();
+                entity.Property(e => e.MaHd).HasColumnName("maHD");
 
                 entity.Property(e => e.MaLoaiVe)
                     .IsRequired()
@@ -201,7 +197,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<KhachHang>(entity =>
             {
                 entity.HasKey(e => e.MaKh)
-                    .HasName("PK__KhachHan__7A3ECFE40BCC8D9D");
+                    .HasName("PK__KhachHan__7A3ECFE404A2C0BB");
 
                 entity.Property(e => e.MaKh)
                     .HasColumnName("maKH")
@@ -232,7 +228,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<LoaiVe>(entity =>
             {
                 entity.HasKey(e => e.MaLoaiVe)
-                    .HasName("PK__LoaiVe__7AA7A7A7AA73D865");
+                    .HasName("PK__LoaiVe__7AA7A7A7145E90EB");
 
                 entity.Property(e => e.MaLoaiVe)
                     .HasColumnName("maLoaiVe")
@@ -249,7 +245,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<LoaiXe>(entity =>
             {
                 entity.HasKey(e => e.MaLoaiXe)
-                    .HasName("PK__LoaiXe__7AA7B7E5DD1755E7");
+                    .HasName("PK__LoaiXe__7AA7B7E55EDF23CC");
 
                 entity.Property(e => e.MaLoaiXe)
                     .HasColumnName("maLoaiXe")
@@ -279,7 +275,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<NhanVien>(entity =>
             {
                 entity.HasKey(e => e.MaNv)
-                    .HasName("PK__NhanVien__7A3EC7D52728AF99");
+                    .HasName("PK__NhanVien__7A3EC7D5A5355426");
 
                 entity.Property(e => e.MaNv)
                     .HasColumnName("maNV")
@@ -342,7 +338,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<TaiKhoan>(entity =>
             {
                 entity.HasKey(e => e.MaTk)
-                    .HasName("PK__TaiKhoan__7A22625EBAF5AFE1");
+                    .HasName("PK__TaiKhoan__7A22625E123A3F1D");
 
                 entity.Property(e => e.MaTk)
                     .HasColumnName("maTK")
@@ -368,7 +364,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<VeLuot>(entity =>
             {
                 entity.HasKey(e => e.MaVe)
-                    .HasName("PK__VeLuot__7A2272762949CF60");
+                    .HasName("PK__VeLuot__7A227276ADAAC8F9");
 
                 entity.Property(e => e.MaVe)
                     .HasColumnName("maVe")
@@ -399,7 +395,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<VeThang>(entity =>
             {
                 entity.HasKey(e => e.MaVe)
-                    .HasName("PK__VeThang__7A2272768C2563DA");
+                    .HasName("PK__VeThang__7A2272763B2F58FB");
 
                 entity.Property(e => e.MaVe)
                     .HasColumnName("maVe")
@@ -454,7 +450,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<Xe>(entity =>
             {
                 entity.HasKey(e => e.BienSo)
-                    .HasName("PK__Xe__8563D8C728A66993");
+                    .HasName("PK__Xe__8563D8C73C1333ED");
 
                 entity.Property(e => e.BienSo)
                     .HasColumnName("bienSo")

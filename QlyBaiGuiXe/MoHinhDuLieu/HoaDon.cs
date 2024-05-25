@@ -9,7 +9,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
 {
     public partial class HoaDon
     {
-        public string MaHd { get; set; }
+        public int MaHd { get; set; }
         public DateTime TgVao { get; set; }
         public DateTime? TgRa { get; set; }
         public string MaVe { get; set; }
