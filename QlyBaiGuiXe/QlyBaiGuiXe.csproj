@@ -134,6 +134,12 @@
     <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.5.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.6.35.0\lib\net472\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.35.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.35.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -185,6 +191,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\BaiXe.cs" />
+    <Compile Include="EntityFramework\BaiXeDBContext.cs" />
+    <Compile Include="EntityFramework\BangGia.cs" />
+    <Compile Include="EntityFramework\ChucVu.cs" />
+    <Compile Include="EntityFramework\GiaQuaDem.cs" />
+    <Compile Include="EntityFramework\HoaDon.cs" />
+    <Compile Include="EntityFramework\KhachHang.cs" />
+    <Compile Include="EntityFramework\LoaiVe.cs" />
+    <Compile Include="EntityFramework\LoaiXe.cs" />
+    <Compile Include="EntityFramework\NhanVien.cs" />
+    <Compile Include="EntityFramework\TaiKhoan.cs" />
+    <Compile Include="EntityFramework\VeLuot.cs" />
+    <Compile Include="EntityFramework\VeThang.cs" />
+    <Compile Include="EntityFramework\Xe.cs" />
     <Compile Include="GUI\BaiXe\fBTbaiXe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -275,20 +295,6 @@
     <Compile Include="GUI\VeXe\ucVeXe.Designer.cs">
       <DependentUpon>ucVeXe.cs</DependentUpon>
     </Compile>
-    <Compile Include="MoHinhDuLieu\BaiXe.cs" />
-    <Compile Include="MoHinhDuLieu\BaiXeDBContext.cs" />
-    <Compile Include="MoHinhDuLieu\BangGia.cs" />
-    <Compile Include="MoHinhDuLieu\ChucVu.cs" />
-    <Compile Include="MoHinhDuLieu\GiaQuaDem.cs" />
-    <Compile Include="MoHinhDuLieu\HoaDon.cs" />
-    <Compile Include="MoHinhDuLieu\KhachHang.cs" />
-    <Compile Include="MoHinhDuLieu\LoaiVe.cs" />
-    <Compile Include="MoHinhDuLieu\LoaiXe.cs" />
-    <Compile Include="MoHinhDuLieu\NhanVien.cs" />
-    <Compile Include="MoHinhDuLieu\TaiKhoan.cs" />
-    <Compile Include="MoHinhDuLieu\VeLuot.cs" />
-    <Compile Include="MoHinhDuLieu\VeThang.cs" />
-    <Compile Include="MoHinhDuLieu\Xe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setting\blurForm.cs">
