@@ -15,12 +15,14 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
 {
     public partial class fQlyNhanVien : Form
     {
-        public fQlyNhanVien()
+        private string choseNV = string.Empty;
+        public fQlyNhanVien(string manv)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
 
+            this.choseNV = manv;
         }
 
         private void panel7_MouseDown(object sender, MouseEventArgs e)
@@ -78,6 +80,7 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
             cbbGioiTinh.Items.Add("Nam");
             cbbGioiTinh.Items.Add("Nữ");
 
+            BaiXeDBContext db = new BaiXeDBContext();
             var chucvu = (from cv in db.ChucVu
                           select cv.TenCv).ToList();
             foreach(var cv in chucvu)

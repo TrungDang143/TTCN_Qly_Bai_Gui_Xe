@@ -49,6 +49,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.pnl_btnTaiKhoan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
@@ -63,6 +64,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -238,7 +240,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.lbMaNV);
+            this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
@@ -250,7 +252,7 @@
             this.lbMaNV.AutoSize = true;
             this.lbMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbMaNV.ForeColor = System.Drawing.Color.White;
-            this.lbMaNV.Location = new System.Drawing.Point(18, 94);
+            this.lbMaNV.Location = new System.Drawing.Point(5, 19);
             this.lbMaNV.Name = "lbMaNV";
             this.lbMaNV.Size = new System.Drawing.Size(108, 20);
             this.lbMaNV.TabIndex = 1;
@@ -266,16 +268,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pnl_btnTaiKhoan_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::QlyBaiGuiXe.Properties.Resources.nhanvien;
-            this.pictureBox1.Location = new System.Drawing.Point(47, 27);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(60, 60);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // panel2
             // 
@@ -317,6 +309,14 @@
             this.pnlMain.Size = new System.Drawing.Size(1328, 811);
             this.pnlMain.TabIndex = 1;
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.lbMaNV);
+            this.panel4.Location = new System.Drawing.Point(7, 93);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(136, 59);
+            this.panel4.TabIndex = 2;
+            // 
             // mainUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -329,6 +329,7 @@
             this.Name = "mainUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "mainUI";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.mainUI_FormClosed);
             this.Load += new System.EventHandler(this.mainUI_Load);
             this.panel1.ResumeLayout(false);
             this.pnl_btnTaiKhoan.ResumeLayout(false);
@@ -344,11 +345,12 @@
             this.pnl_btnBaiXe.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -375,5 +377,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.Panel panel4;
     }
 }

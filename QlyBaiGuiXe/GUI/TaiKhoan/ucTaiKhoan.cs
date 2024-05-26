@@ -14,6 +14,7 @@ namespace QlyBaiGuiXe.GUI
 {
     public partial class ucTaiKhoan : UserControl
     {
+        private string choseNV = string.Empty;
         public ucTaiKhoan()
         {
             InitializeComponent();
@@ -36,7 +37,7 @@ namespace QlyBaiGuiXe.GUI
             mainUI newF = pnl.Parent as mainUI;
 
             newF.showBlur();
-            fQlyNhanVien newform = new fQlyNhanVien();
+            fQlyNhanVien newform = new fQlyNhanVien(choseNV);
             newform.ShowDialog();
             newF.closeBlur();
         }

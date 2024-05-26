@@ -96,15 +96,62 @@ namespace QlyBaiGuiXe
 
         }
 
+        private void reset()
+        {
+            txbMk.Text = string.Empty;
+            txbTk.Text = string.Empty;
+        }
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             // check tai khoan
 
-            mainUI newForm = new mainUI(txbTk.Text);
-            this.Hide();
-            newForm.ShowDialog();
-            this.Close();  
-            
+            try
+            {
+                BaiXeDBContext db = new BaiXeDBContext();
+                var nhanVien = (from nv in db.NhanVien
+                                where nv.MaNv == txbTk.Text
+                                select nv).FirstOrDefault();
+                if (nhanVien == null)
+                {
+                    MessageBox.Show("Vui lòng kiểm tra lại tên đăng nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txbTk.Focus();
+                }
+                else
+                {
+                    var checkMK = (from tk in db.TaiKhoan
+                                   where tk.MaTk == nhanVien.MaTk
+                                   select tk.MatKhau).FirstOrDefault();
+
+                    if (checkMK != null)
+                    {
+                        if (checkMK.Equals(txbMk.Text))
+                        {
+                            mainUI m = new mainUI(nhanVien);
+                            this.Hide();
+                            m.ShowDialog();
+                            if (!m.isClose)
+                            {
+                                reset();
+                                txbTk.Focus();
+                                this.Show();
+                                this.ShowInTaskbar = true;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Vui lòng kiểm tra lại mật khẩu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            txbMk.Focus();
+                        }
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi lấy dữ liệu đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+
         }
     }
 }
