@@ -15,7 +15,7 @@ namespace QlyBaiGuiXe.EntityFramework
             Xe = new HashSet<Xe>();
         }
 
-        public int MaKh { get; set; }
+        public string MaKh { get; set; }
         public string HoTen { get; set; }
         public string Sdt { get; set; }
         public bool GioiTinh { get; set; }

@@ -53,7 +53,6 @@
             this.cbbChucVu = new System.Windows.Forms.ComboBox();
             this.picMk = new System.Windows.Forms.PictureBox();
             this.picEmail = new System.Windows.Forms.PictureBox();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMk)).BeginInit();
@@ -78,7 +77,6 @@
             this.btnXoaNV.TabIndex = 64;
             this.btnXoaNV.Text = "Xoá NV";
             this.btnXoaNV.UseVisualStyleBackColor = true;
-            this.btnXoaNV.Click += new System.EventHandler(this.btnXoaNV_Click);
             // 
             // label9
             // 
@@ -151,6 +149,7 @@
             // 
             // dtpk
             // 
+            this.dtpk.Enabled = false;
             this.dtpk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpk.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpk.Location = new System.Drawing.Point(569, 164);
@@ -219,10 +218,11 @@
             // 
             // txbMaNV
             // 
-            this.txbMaNV.BackColor = System.Drawing.SystemColors.Window;
+            this.txbMaNV.BackColor = System.Drawing.Color.Lavender;
             this.txbMaNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbMaNV.Location = new System.Drawing.Point(142, 122);
             this.txbMaNV.Name = "txbMaNV";
+            this.txbMaNV.ReadOnly = true;
             this.txbMaNV.Size = new System.Drawing.Size(230, 28);
             this.txbMaNV.TabIndex = 54;
             // 
@@ -273,7 +273,6 @@
             this.btnTaoNV.TabIndex = 64;
             this.btnTaoNV.Text = "Tạo mới";
             this.btnTaoNV.UseVisualStyleBackColor = true;
-            this.btnTaoNV.Click += new System.EventHandler(this.btnTaoNV_Click);
             // 
             // cbbChucVu
             // 
@@ -306,17 +305,6 @@
             this.picEmail.TabStop = false;
             this.picEmail.Click += new System.EventHandler(this.picEmail_Click);
             // 
-            // btnXoa
-            // 
-            this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Location = new System.Drawing.Point(357, 338);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(137, 38);
-            this.btnXoa.TabIndex = 64;
-            this.btnXoa.Text = "Xoá thông tin";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
-            // 
             // fQlyNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -326,7 +314,6 @@
             this.Controls.Add(this.picMk);
             this.Controls.Add(this.cbbChucVu);
             this.Controls.Add(this.cbbGioiTinh);
-            this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnTaoNV);
             this.Controls.Add(this.btnXoaNV);
             this.Controls.Add(this.label9);
@@ -386,6 +373,5 @@
         private System.Windows.Forms.ComboBox cbbChucVu;
         private System.Windows.Forms.PictureBox picMk;
         private System.Windows.Forms.PictureBox picEmail;
-        private System.Windows.Forms.Button btnXoa;
     }
 }

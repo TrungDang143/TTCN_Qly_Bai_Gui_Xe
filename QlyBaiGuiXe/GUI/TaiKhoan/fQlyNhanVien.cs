@@ -10,17 +10,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace QlyBaiGuiXe.GUI.TaiKhoan
 {
     public partial class fQlyNhanVien : Form
     {
-        private string choseNV = string.Empty;
-        public fQlyNhanVien(string manv)
+        public fQlyNhanVien()
         {
-            choseNV = manv;
-
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
@@ -76,8 +72,6 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
 
         private void fQlyNhanVien_Load(object sender, EventArgs e)
         {
-            BaiXeDBContext db = new BaiXeDBContext();
-            
             dtpk.Format = DateTimePickerFormat.Custom;
             dtpk.CustomFormat = "dd/MM/yyyy";
 
