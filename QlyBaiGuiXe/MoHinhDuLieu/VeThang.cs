@@ -13,7 +13,8 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
         public string BienSo { get; set; }
         public string MaLoaiVe { get; set; }
         public DateTime ThoiHan { get; set; }
-        public int MaKh { get; set; }
+        public string MaKh { get; set; }
+
         public virtual Xe BienSoNavigation { get; set; }
         public virtual KhachHang MaKhNavigation { get; set; }
         public virtual LoaiVe MaLoaiVeNavigation { get; set; }

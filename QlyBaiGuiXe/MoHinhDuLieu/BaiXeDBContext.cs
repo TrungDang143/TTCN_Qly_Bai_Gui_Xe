@@ -38,7 +38,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=BaiXeDB;Integrated Security=True;Trust Server Certificate=True");
+                optionsBuilder.UseSqlServer("Data Source=DESKTOP-JUT8TOT\\SQLEXPRESS;Initial Catalog=BaiXeDB;Integrated Security=True");
             }
         }
 
@@ -47,12 +47,14 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<BaiXe>(entity =>
             {
                 entity.HasKey(e => e.MaBaiXe)
-                    .HasName("PK__BaiXe__FA021C43DC70998F");
+                    .HasName("PK__BaiXe__FA021C43EC712E5E");
+
                 entity.Property(e => e.MaBaiXe)
                     .HasColumnName("maBaiXe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.SoLuong).HasColumnName("soLuong");
 
                 entity.Property(e => e.TenBai)
@@ -64,17 +66,20 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<BangGia>(entity =>
             {
                 entity.HasKey(e => new { e.MaLoaiXe, e.MaLoaiVe })
-                    .HasName("PK__BangGia__1D0DCD9FF3B32E9A");
+                    .HasName("PK__BangGia__1D0DCD9F527BDF25");
+
                 entity.Property(e => e.MaLoaiXe)
                     .HasColumnName("maLoaiXe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.MaLoaiVe)
                     .HasColumnName("maLoaiVe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.Gia).HasColumnName("gia");
 
                 entity.HasOne(d => d.MaLoaiVeNavigation)
@@ -93,12 +98,14 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<ChucVu>(entity =>
             {
                 entity.HasKey(e => e.MaCv)
-                    .HasName("PK__ChucVu__7A3E0CF06EBBBC47");
+                    .HasName("PK__ChucVu__7A3E0CF0F22130A4");
+
                 entity.Property(e => e.MaCv)
                     .HasColumnName("maCV")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.TenCv)
                     .IsRequired()
                     .HasColumnName("tenCV")
@@ -108,12 +115,14 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<GiaQuaDem>(entity =>
             {
                 entity.HasKey(e => e.MaLoaiXe)
-                    .HasName("PK__GiaQuaDe__7AA7B7E586EE5FB7");
+                    .HasName("PK__GiaQuaDe__7AA7B7E542181244");
+
                 entity.Property(e => e.MaLoaiXe)
                     .HasColumnName("maLoaiXe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.Gia).HasColumnName("gia");
 
                 entity.HasOne(d => d.MaLoaiXeNavigation)
@@ -126,7 +135,8 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<HoaDon>(entity =>
             {
                 entity.HasKey(e => e.MaHd)
-                    .HasName("PK__HoaDon__7A3E1486D1C45083");
+                    .HasName("PK__HoaDon__7A3E148608F80F54");
+
                 entity.Property(e => e.MaHd).HasColumnName("maHD");
 
                 entity.Property(e => e.MaLoaiVe)
@@ -135,6 +145,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.MaLoaiXe)
                     .IsRequired()
                     .HasColumnName("maLoaiXe")
@@ -148,12 +159,14 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.MaVe)
                     .IsRequired()
                     .HasColumnName("maVe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.TgRa)
                     .HasColumnName("tgRa")
                     .HasColumnType("datetime");
@@ -191,6 +204,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.DiaChi)
                     .IsRequired()
                     .HasColumnName("diaChi")
@@ -214,12 +228,14 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<LoaiVe>(entity =>
             {
                 entity.HasKey(e => e.MaLoaiVe)
-                    .HasName("PK__LoaiVe__7AA7A7A747C04B8D");
+                    .HasName("PK__LoaiVe__7AA7A7A7145E90EB");
+
                 entity.Property(e => e.MaLoaiVe)
                     .HasColumnName("maLoaiVe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.TenLoai)
                     .IsRequired()
                     .HasColumnName("tenLoai")
@@ -229,18 +245,21 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<LoaiXe>(entity =>
             {
                 entity.HasKey(e => e.MaLoaiXe)
-                    .HasName("PK__LoaiXe__7AA7B7E57681CEAE");
+                    .HasName("PK__LoaiXe__7AA7B7E55EDF23CC");
+
                 entity.Property(e => e.MaLoaiXe)
                     .HasColumnName("maLoaiXe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.MaBaiXe)
                     .IsRequired()
                     .HasColumnName("maBaiXe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.TenXe)
                     .IsRequired()
                     .HasColumnName("tenXe")
@@ -256,18 +275,21 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<NhanVien>(entity =>
             {
                 entity.HasKey(e => e.MaNv)
-                    .HasName("PK__NhanVien__7A3EC7D5D70E7842");
+                    .HasName("PK__NhanVien__7A3EC7D5A5355426");
+
                 entity.Property(e => e.MaNv)
                     .HasColumnName("maNV")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasColumnName("email")
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.GioiTinh).HasColumnName("gioiTinh");
 
                 entity.Property(e => e.HoTen)
@@ -288,6 +310,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.NgaySinh)
                     .HasColumnName("ngaySinh")
                     .HasColumnType("datetime");
@@ -298,6 +321,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
                     .HasMaxLength(11)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.HasOne(d => d.MaCvNavigation)
                     .WithMany(p => p.NhanVien)
                     .HasForeignKey(d => d.MaCv)
@@ -321,12 +345,14 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.MatKhau)
                     .IsRequired()
                     .HasColumnName("matKhau")
                     .HasMaxLength(20)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.TenDangNhap)
                     .IsRequired()
                     .HasColumnName("tenDangNhap")
@@ -338,23 +364,27 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<VeLuot>(entity =>
             {
                 entity.HasKey(e => e.MaVe)
-                    .HasName("PK__VeLuot__7A227276A51C574C");
+                    .HasName("PK__VeLuot__7A227276ADAAC8F9");
+
                 entity.Property(e => e.MaVe)
                     .HasColumnName("maVe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.BienSo)
                     .HasColumnName("bienSo")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.MaLoaiVe)
                     .IsRequired()
                     .HasColumnName("maLoaiVe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.HasOne(d => d.MaLoaiVeNavigation)
                     .WithMany(p => p.VeLuot)
                     .HasForeignKey(d => d.MaLoaiVe)
@@ -372,6 +402,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.BienSo)
                     .IsRequired()
                     .HasColumnName("bienSo")
@@ -385,12 +416,14 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.MaLoaiVe)
                     .IsRequired()
                     .HasColumnName("maLoaiVe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.ThoiHan)
                     .HasColumnName("thoiHan")
                     .HasColumnType("datetime");
@@ -417,7 +450,8 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             modelBuilder.Entity<Xe>(entity =>
             {
                 entity.HasKey(e => e.BienSo)
-                    .HasName("PK__Xe__8563D8C75C32921D");
+                    .HasName("PK__Xe__8563D8C73C1333ED");
+
                 entity.Property(e => e.BienSo)
                     .HasColumnName("bienSo")
                     .HasMaxLength(15)
@@ -430,12 +464,14 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.Property(e => e.MaLoaiXe)
                     .IsRequired()
                     .HasColumnName("maLoaiXe")
                     .HasMaxLength(10)
                     .IsUnicode(false)
                     .IsFixedLength();
+
                 entity.HasOne(d => d.MaKhNavigation)
                     .WithMany(p => p.Xe)
                     .HasForeignKey(d => d.MaKh)

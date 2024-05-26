@@ -16,7 +16,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
 
         public string BienSo { get; set; }
         public string MaLoaiXe { get; set; }
-        public int MaKh { get; set; }
+        public string MaKh { get; set; }
 
         public virtual KhachHang MaKhNavigation { get; set; }
         public virtual LoaiXe MaLoaiXeNavigation { get; set; }
