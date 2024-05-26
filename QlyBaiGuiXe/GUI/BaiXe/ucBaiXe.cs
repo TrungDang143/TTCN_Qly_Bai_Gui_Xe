@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QlyBaiGuiXe.GUI.BaiXe;
-using QlyBaiGuiXe.MoHinhDuLieu;
+using QlyBaiGuiXe.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,21 +19,30 @@ namespace QlyBaiGuiXe.GUI
     public partial class ucBaiXe : UserControl
     {
         BaiXeDBContext db = new BaiXeDBContext();
-        public ucBaiXe()
+        NhanVien NV;
+        public ucBaiXe(NhanVien nv)
         {
             InitializeComponent();
             ucBaiXeLoad();
+            NV = nv;
         }
         private void LoadComboBox_LoaiVe()
         {
-            cbbLoaiVe.Items.Add("VT");
-            cbbLoaiVe.Items.Add("VL");
+            var loaive = (from lv in db.LoaiVe
+                          select lv.TenLoai).ToList();
+            foreach (var loaix in loaive)
+            {
+                cbbLoaiVe.Items.Add(loaix);
+            }
         }
         private void LoadComboBox_LoaiXe()
         {
-            cbbLoaiXe.Items.Add("xe may");
-            cbbLoaiXe.Items.Add("xe oto");
-            cbbLoaiXe.Items.Add("xe khach");
+            var loaixe = (from lx in db.LoaiXe
+                          select lx.TenXe).ToList();
+            foreach(var loaix in loaixe)
+            {
+                cbbLoaiXe.Items.Add(loaix);
+            }
         }
 
         private void ucBaiXeLoad()
@@ -109,7 +118,7 @@ namespace QlyBaiGuiXe.GUI
             newHD.TgRa = null;
             newHD.MaVe = ve;
             newHD.MaLoaiVe = cbbLoaiVe.SelectedItem.ToString();
-            newHD.MaNv = "nv1";
+            newHD.MaNv = NV.MaNv;
             var a = (from mlx in db.LoaiXe
                     where mlx.TenXe == cbbLoaiXe.SelectedItem.ToString()
                     select mlx.MaLoaiXe).SingleOrDefault();
@@ -159,7 +168,7 @@ namespace QlyBaiGuiXe.GUI
                                  select bx;
                 if (queryBaiXe.Count() > 0)
                 {
-                    MoHinhDuLieu.BaiXe baiXe = queryBaiXe.SingleOrDefault();
+                    EntityFramework.BaiXe baiXe = queryBaiXe.SingleOrDefault();
                     baiXe.SoLuong = baiXe.SoLuong - 1;
                     db.SaveChanges();
                 }
@@ -241,7 +250,7 @@ namespace QlyBaiGuiXe.GUI
                              select bx;
             if (queryBaiXe.Count() > 0)
             {
-                MoHinhDuLieu.BaiXe baiXe = queryBaiXe.SingleOrDefault();
+                EntityFramework.BaiXe baiXe = queryBaiXe.SingleOrDefault();
                 baiXe.SoLuong = baiXe.SoLuong + 1;
                 db.SaveChanges();
             }
@@ -272,7 +281,7 @@ namespace QlyBaiGuiXe.GUI
                                  select bx;
                 if (queryBaiXe.Count() > 0)
                 {
-                    MoHinhDuLieu.BaiXe baiXe = queryBaiXe.SingleOrDefault();
+                    EntityFramework.BaiXe baiXe = queryBaiXe.SingleOrDefault();
                     baiXe.SoLuong = baiXe.SoLuong + 1;
                     db.SaveChanges();
                 }

@@ -5,15 +5,10 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace QlyBaiGuiXe.MoHinhDuLieu
+namespace QlyBaiGuiXe.EntityFramework
 {
     public partial class NhanVien
     {
-        public NhanVien()
-        {
-            HoaDon = new HashSet<HoaDon>();
-        }
-
         public string MaNv { get; set; }
         public string HoTen { get; set; }
         public string Sdt { get; set; }
@@ -25,6 +20,5 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
 
         public virtual ChucVu MaCvNavigation { get; set; }
         public virtual TaiKhoan MaTkNavigation { get; set; }
-        public virtual ICollection<HoaDon> HoaDon { get; set; }
     }
 }

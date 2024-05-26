@@ -1,5 +1,5 @@
 ﻿using QlyBaiGuiXe.GUI;
-using QlyBaiGuiXe.MoHinhDuLieu;
+using QlyBaiGuiXe.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

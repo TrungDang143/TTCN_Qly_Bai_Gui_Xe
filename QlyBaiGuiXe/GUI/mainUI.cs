@@ -1,4 +1,4 @@
-﻿using QlyBaiGuiXe.MoHinhDuLieu;
+﻿using QlyBaiGuiXe.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -146,7 +146,7 @@ namespace QlyBaiGuiXe.GUI
             resetSelect();
             pnl_btnBaiXe.BackColor = System.Drawing.Color.MidnightBlue;
 
-            ucBaiXe newUC = new ucBaiXe();
+            ucBaiXe newUC = new ucBaiXe(NV);
             pnlMain.Controls.Add(newUC);
         }
 

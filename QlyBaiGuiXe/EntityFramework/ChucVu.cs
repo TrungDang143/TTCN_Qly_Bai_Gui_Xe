@@ -5,18 +5,17 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace QlyBaiGuiXe.MoHinhDuLieu
+namespace QlyBaiGuiXe.EntityFramework
 {
-    public partial class TaiKhoan
+    public partial class ChucVu
     {
-        public TaiKhoan()
+        public ChucVu()
         {
             NhanVien = new HashSet<NhanVien>();
         }
 
-        public int MaTk { get; set; }
-        public string TenDangNhap { get; set; }
-        public string MatKhau { get; set; }
+        public string MaCv { get; set; }
+        public string TenCv { get; set; }
 
         public virtual ICollection<NhanVien> NhanVien { get; set; }
     }
