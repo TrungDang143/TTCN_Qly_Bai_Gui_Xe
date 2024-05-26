@@ -203,9 +203,6 @@ insert into HoaDon values("14:19:00", NULL, "VE1", "VL", "nv1", "xe01")
 insert into HoaDon values("14:19:00", NULL, "VE10", "VL", "nv1", "xe02")
 insert into HoaDon values("14:19:00", NULL, "VE100", "VL", "nv1", "xe03")
 
-delete from HoaDon
-
-
 insert into LoaiVe values("VL", "Ve luot")
 insert into LoaiVe values("VT", "Ve thang")
 
@@ -261,19 +258,20 @@ SELECT * FROM dbo.getVeXe();
 
 go
 
-DROP FUNCTION getVeXe
+
 --sinh vé lượt theo kích thước bãi xe
 declare @n int
 set @n = (select sum(soLuong) from BaiXe)
 print @n
 while @n > 0
 begin
+
 	insert into VeLuot values(concat('VE', @n), 'VL','')
+
 	set @n = @n-1
 	print concat('VE', @n)
 end
 
-delete from VeLuot
 /*
 create proc TaoHoaDon @mave char(10), @loaive char(10), @loaixe char(10), @bienso char(11)
 as
