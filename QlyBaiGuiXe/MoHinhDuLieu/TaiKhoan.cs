@@ -14,7 +14,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
             NhanVien = new HashSet<NhanVien>();
         }
 
-        public string MaTk { get; set; }
+        public int MaTk { get; set; }
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
 

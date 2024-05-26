@@ -20,7 +20,7 @@ namespace QlyBaiGuiXe.MoHinhDuLieu
         public DateTime NgaySinh { get; set; }
         public bool GioiTinh { get; set; }
         public string Email { get; set; }
-        public string MaTk { get; set; }
+        public int MaTk { get; set; }
         public string MaCv { get; set; }
 
         public virtual ChucVu MaCvNavigation { get; set; }
