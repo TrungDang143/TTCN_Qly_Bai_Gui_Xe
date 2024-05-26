@@ -199,6 +199,10 @@ insert into LoaiXe values("xe01", "xe may", "bx01")
 insert into LoaiXe values("xe02", "xe oto", "bx02")
 insert into LoaiXe values("xe03", "xe khach", "bx03")
 
+insert into HoaDon values("14:19:00", NULL, "VE1", "VL", "nv1", "xe01")
+insert into HoaDon values("14:19:00", NULL, "VE10", "VL", "nv1", "xe02")
+insert into HoaDon values("14:19:00", NULL, "VE100", "VL", "nv1", "xe03")
+
 insert into LoaiVe values("VL", "Ve luot")
 insert into LoaiVe values("VT", "Ve thang")
 
@@ -228,6 +232,32 @@ insert into ChucVu values("ql", "Quan ly")
 insert into TaiKhoan values("tk1", "admin", "1111")
 insert into NhanVien values("nv1", "dTrung", "0123456978", "2024/12/12", 1, "abc@gmail.com", "tk1", "ql")
 
+select * from HoaDon
+select * from VeLuot
+select * from BaiXe
+select * from Xe
+select * from LoaiVe
+select * from LoaiXe
+select * from VeThang
+select * from NhanVien
+
+--Tao ham lay ve xe
+CREATE FUNCTION getVeXe()
+RETURNS @ResultTable TABLE (maVe CHAR(10))
+AS
+BEGIN
+    INSERT INTO @ResultTable (maVe)
+    SELECT TOP 1 maVe
+    FROM VeLuot
+    WHERE bienSo = '';
+
+    RETURN;
+END;
+
+SELECT * FROM dbo.getVeXe();
+
+go
+
 
 --sinh vé lượt theo kích thước bãi xe
 declare @n int
@@ -235,7 +265,9 @@ set @n = (select sum(soLuong) from BaiXe)
 print @n
 while @n > 0
 begin
-	insert into VeLuot values(concat('VE', @n), "VL","")
+
+	insert into VeLuot values(concat('VE', @n), 'VL','')
+
 	set @n = @n-1
 	print concat('VE', @n)
 end
