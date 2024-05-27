@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace QlyBaiGuiXe.GUI.TaiKhoan
 {
@@ -18,11 +19,12 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
         private string choseNV = string.Empty;
         public fQlyNhanVien(string manv)
         {
+            choseNV = manv;
+
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
 
-            this.choseNV = manv;
         }
 
         private void panel7_MouseDown(object sender, MouseEventArgs e)
@@ -74,13 +76,14 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
 
         private void fQlyNhanVien_Load(object sender, EventArgs e)
         {
+            BaiXeDBContext db = new BaiXeDBContext();
+            
             dtpk.Format = DateTimePickerFormat.Custom;
             dtpk.CustomFormat = "dd/MM/yyyy";
 
             cbbGioiTinh.Items.Add("Nam");
             cbbGioiTinh.Items.Add("Nữ");
 
-            BaiXeDBContext db = new BaiXeDBContext();
             var chucvu = (from cv in db.ChucVu
                           select cv.TenCv).ToList();
             foreach(var cv in chucvu)
