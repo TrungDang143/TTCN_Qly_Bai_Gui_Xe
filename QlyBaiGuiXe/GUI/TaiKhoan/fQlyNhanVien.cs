@@ -106,11 +106,12 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
                 txbMaNV.ReadOnly = true;
                 txbMaNV.BackColor = System.Drawing.Color.Lavender;
 
+                btnTaoNV.Enabled = false;
+                btnXoa.Enabled = false;
             }
             else
             {
                 btnLuu.Enabled = false;
-                btnXoa.Enabled = false;
                 btnXoaNV.Enabled = false;
             }
         }
