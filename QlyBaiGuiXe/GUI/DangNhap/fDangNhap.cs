@@ -22,11 +22,6 @@ namespace QlyBaiGuiXe
             txbTk.Select();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -104,28 +99,28 @@ namespace QlyBaiGuiXe
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             // check tai khoan
-
-            try
+            if (txbTk.Text == string.Empty || txbMk.Text == string.Empty)
             {
-                BaiXeDBContext db = new BaiXeDBContext();
-                var nhanVien = (from nv in db.NhanVien
-                                where nv.MaNv == txbTk.Text
-                                select nv).FirstOrDefault();
-                if (nhanVien == null)
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txbTk.Focus();
+            }
+            else
+            {
+                try
                 {
-                    MessageBox.Show("Vui lòng kiểm tra lại tên đăng nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    txbTk.Focus();
-                }
-                else
-                {
+                    BaiXeDBContext db = new BaiXeDBContext();
                     var checkMK = (from tk in db.TaiKhoan
-                                   where tk.MaTk == nhanVien.MaTk
-                                   select tk.MatKhau).FirstOrDefault();
+                                    where tk.TenDangNhap == txbTk.Text
+                                    select tk.MatKhau).FirstOrDefault();
 
                     if (checkMK != null)
                     {
                         if (checkMK.Equals(txbMk.Text))
                         {
+                            var nhanVien = (from nv in db.NhanVien
+                                            where nv.MaNv == txbTk.Text
+                                            select nv).FirstOrDefault();
+
                             mainUI m = new mainUI(nhanVien);
                             this.Hide();
                             m.ShowDialog();
@@ -143,15 +138,17 @@ namespace QlyBaiGuiXe
                             txbMk.Focus();
                         }
                     }
-
+                    else
+                    {
+                        MessageBox.Show("Vui lòng kiểm tra lại thông tin đăng nhập", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txbTk.Focus();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi lấy dữ liệu đăng nhập!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Lỗi lấy dữ liệu đăng nhập!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-
         }
     }
 }
