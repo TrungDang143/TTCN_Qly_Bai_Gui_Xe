@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QlyBaiGuiXe.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,13 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
 {
     public partial class fDoiMatKhau : Form
     {
-        public fDoiMatKhau()
+        private NhanVien currentNV = null;
+        public fDoiMatKhau(NhanVien currentNV)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
-
+            this.currentNV = currentNV;
         }
 
         private void panel7_MouseDown(object sender, MouseEventArgs e)
@@ -101,6 +103,27 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
             if(lbCanhBao.Visible == true)
             {
                 MessageBox.Show("Vui lòng nhập lại mật khẩu", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                try
+                {
+                    BaiXeDBContext db = new BaiXeDBContext();
+
+                    Entities.TaiKhoan tk = db.TaiKhoan.Find(currentNV.MaTk);
+                    if (tk != null)
+                    {
+                        tk.MatKhau = txbMk1.Text;
+
+                        db.SaveChanges();
+                    }
+                    DialogResult ok = MessageBox.Show("Vui lòng đăng nhập lại hệ thống!", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi lấy cập nhật thông tin nhân viên!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

@@ -12,19 +12,23 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.IdentityModel.Tokens;
+using System.Text.RegularExpressions;
 
 namespace QlyBaiGuiXe.GUI
 {
     public partial class ucTaiKhoan : UserControl
     {
         private string choseNV = string.Empty;
-        public ucTaiKhoan()
+        private NhanVien currentNV = null;
+        public ucTaiKhoan(NhanVien currentNV)
         {
             InitializeComponent();
 
-            loadData();
-
+            this.currentNV = currentNV;
+            
         }
+
         private void loadData()
         {
             dgvNhanVien.AutoGenerateColumns = true;
@@ -55,6 +59,29 @@ namespace QlyBaiGuiXe.GUI
             dgvNhanVien.Columns[3].HeaderText = "SĐT";
             dgvNhanVien.Columns[4].HeaderText = "Ngày sinh";
             dgvNhanVien.Columns[5].HeaderText = "Giới tính";
+
+            cbbGioiTinh.Items.Clear();
+            cbbGioiTinh.Items.Add("Nam");
+            cbbGioiTinh.Items.Add("Nữ");
+
+            try
+            {
+                txbChucVu.Text = (from cv in db.ChucVu
+                                  where currentNV.MaCv == cv.MaCv
+                                  select cv.TenCv).FirstOrDefault();
+                txbEmail.Text = currentNV.Email;
+                txbHoTen.Text = currentNV.HoTen;
+                txbMaNhanVien.Text = currentNV.MaNv;
+                txbSDT.Text = currentNV.Sdt;
+                cbbGioiTinh.SelectedIndex = currentNV.GioiTinh == true ? 0 : 1;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi lấy dữ liệu cá nhân!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            btnLuu.Enabled = false;
         }
 
         private void btnDoiMatKhau_Click(object sender, EventArgs e)
@@ -63,9 +90,10 @@ namespace QlyBaiGuiXe.GUI
             mainUI newF = pnl.Parent as mainUI;
 
             newF.showBlur();
-            fDoiMatKhau newform = new fDoiMatKhau();
+            fDoiMatKhau newform = new fDoiMatKhau(currentNV);
             newform.ShowDialog();
             newF.closeBlur();
+            btnDangXuat.PerformClick();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -78,11 +106,20 @@ namespace QlyBaiGuiXe.GUI
             newform.ShowDialog();
             newF.closeBlur();
             loadData();
+            choseNV = string.Empty;
         }
 
         private void ucTaiKhoan_Load(object sender, EventArgs e)
         {
-            
+            loadData();
+            if(currentNV.MaCv == "ql")
+            {
+                groupBox2.Visible = true;
+            }
+            else
+            {
+                groupBox2.Visible = false; 
+            }
         }
 
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -115,6 +152,133 @@ namespace QlyBaiGuiXe.GUI
             Task.Delay(500).Wait();
             mainF.isClose = false;
             mainF.Close();
+        }
+
+        bool changed = false;
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if(checkHopLe())
+            {
+                DialogResult kq = MessageBox.Show("Xác nhận cập nhật thông tin?", "Lưu ý", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (kq == DialogResult.Yes)
+                {
+                    try
+                    {
+                        BaiXeDBContext db = new BaiXeDBContext();
+
+                        NhanVien nv = db.NhanVien.Find(txbMaNhanVien.Text);
+                        if (nv != null)
+                        {
+                            nv.Sdt = txbSDT.Text;
+                            nv.Email = txbEmail.Text;
+                            nv.HoTen = txbHoTen.Text;
+                            nv.GioiTinh = cbbGioiTinh.SelectedIndex == 1 ? false : true;
+                            nv.NgaySinh = dtpkNgaySinh.Value;
+
+                            db.SaveChanges();
+                        }
+                        DialogResult ok =  MessageBox.Show("Vui lòng đăng nhập lại hệ thống!", "Lưu ý", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        btnDangXuat.PerformClick();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi cập nhật thông tin nhân viên!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+        private bool checkHopLe()
+        {
+            if (txbEmail.Text.IsNullOrEmpty() ||
+                txbHoTen.Text.IsNullOrEmpty() ||
+                txbSDT.Text.IsNullOrEmpty() ||
+                cbbGioiTinh.Text.IsNullOrEmpty())
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            else
+            {
+                string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+                if (!Regex.IsMatch(txbEmail.Text, pattern))
+                {
+                    MessageBox.Show("Vui lòng nhập đúng định dạng email. \nVí dụ: abc@gmail.com", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txbEmail.Focus();
+                    txbEmail.SelectAll();
+                    return false;
+                }
+            }
+            return true;
+        }
+        private void txbHoTen_TextChanged(object sender, EventArgs e)
+        {
+            changed = true;
+            btnLuu.Enabled = true;
+        }
+
+        private void findMaNV()
+        {
+            try
+            {
+                BaiXeDBContext db = new BaiXeDBContext();
+                var queryNV = from nv in db.NhanVien
+                              join cv in db.ChucVu on nv.MaCv equals cv.MaCv
+                              where nv.MaNv.Contains(txbTimKiem.Text)
+                              select new
+                              {
+                                  nv.MaNv,
+                                  nv.HoTen,
+                                  cv.TenCv,
+                                  nv.Sdt,
+                                  nv.NgaySinh,
+                                  GioiTinh = nv.GioiTinh == true ? "Nam" : "Nữ",
+                              };
+
+                //dgvNhanVien.Rows.Clear();
+                dgvNhanVien.DataSource = queryNV.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi lấy thông tin nhân viên!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void findHoTen()
+        {
+            try
+            {
+                BaiXeDBContext db = new BaiXeDBContext();
+                var queryNV = from nv in db.NhanVien
+                                join cv in db.ChucVu on nv.MaCv equals cv.MaCv
+                                where nv.HoTen.Contains(txbTimKiem.Text)
+                                select new
+                                {
+                                    nv.MaNv,
+                                    nv.HoTen,
+                                    cv.TenCv,
+                                    nv.Sdt,
+                                    nv.NgaySinh,
+                                    GioiTinh = nv.GioiTinh == true ? "Nam" : "Nữ",
+                                };
+
+                //dgvNhanVien.Rows.Clear();
+                dgvNhanVien.DataSource = queryNV.ToList();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Lỗi lấy thông tin nhân viên!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
+        }
+
+        private void btnTimMaNV_Click(object sender, EventArgs e)
+        {
+            findMaNV();
+        }
+
+        private void btnTimTen_Click(object sender, EventArgs e)
+        {
+            findHoTen();
         }
     }
 }

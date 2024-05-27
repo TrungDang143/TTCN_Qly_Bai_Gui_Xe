@@ -52,12 +52,10 @@
             this.btnTaoNV = new System.Windows.Forms.Button();
             this.cbbChucVu = new System.Windows.Forms.ComboBox();
             this.picMk = new System.Windows.Forms.PictureBox();
-            this.picEmail = new System.Windows.Forms.PictureBox();
             this.btnXoa = new System.Windows.Forms.Button();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMk)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // cbbGioiTinh
@@ -125,7 +123,6 @@
             this.txbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbEmail.Location = new System.Drawing.Point(568, 210);
             this.txbEmail.Name = "txbEmail";
-            this.txbEmail.PasswordChar = '•';
             this.txbEmail.Size = new System.Drawing.Size(230, 28);
             this.txbEmail.TabIndex = 53;
             // 
@@ -295,17 +292,6 @@
             this.picMk.TabStop = false;
             this.picMk.Click += new System.EventHandler(this.picMk_Click);
             // 
-            // picEmail
-            // 
-            this.picEmail.Image = global::QlyBaiGuiXe.Properties.Resources.view;
-            this.picEmail.Location = new System.Drawing.Point(804, 208);
-            this.picEmail.Name = "picEmail";
-            this.picEmail.Size = new System.Drawing.Size(30, 30);
-            this.picEmail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picEmail.TabIndex = 69;
-            this.picEmail.TabStop = false;
-            this.picEmail.Click += new System.EventHandler(this.picEmail_Click);
-            // 
             // btnXoa
             // 
             this.btnXoa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -322,7 +308,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(878, 412);
-            this.Controls.Add(this.picEmail);
             this.Controls.Add(this.picMk);
             this.Controls.Add(this.cbbChucVu);
             this.Controls.Add(this.cbbGioiTinh);
@@ -354,7 +339,6 @@
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMk)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picEmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -385,7 +369,6 @@
         private System.Windows.Forms.Button btnTaoNV;
         private System.Windows.Forms.ComboBox cbbChucVu;
         private System.Windows.Forms.PictureBox picMk;
-        private System.Windows.Forms.PictureBox picEmail;
         private System.Windows.Forms.Button btnXoa;
     }
 }

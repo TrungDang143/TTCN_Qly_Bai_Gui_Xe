@@ -8,9 +8,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace QlyBaiGuiXe.GUI.TaiKhoan
 {
@@ -55,22 +57,6 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
                 this.picMk.Image = global::QlyBaiGuiXe.Properties.Resources.view;
                 txbMk.PasswordChar = '\u2022';
                 showPass = false;
-            }
-        }
-        bool showEmail = false;
-        private void picEmail_Click(object sender, EventArgs e)
-        {
-            if (showEmail == false)
-            {
-                this.picEmail.Image = global::QlyBaiGuiXe.Properties.Resources.hide;
-                txbEmail.PasswordChar = '\0';
-                showEmail = true;
-            }
-            else
-            {
-                this.picEmail.Image = global::QlyBaiGuiXe.Properties.Resources.view;
-                txbEmail.PasswordChar = '\u2022';
-                showEmail = false;
             }
         }
 
@@ -118,7 +104,14 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
                 cbbGioiTinh.Text = query.GioiTinh ? "Nam" : "Nữ";
 
                 txbMaNV.ReadOnly = true;
-                txbMaNV.BackColor = System.Drawing.Color.Lavender; 
+                txbMaNV.BackColor = System.Drawing.Color.Lavender;
+
+            }
+            else
+            {
+                btnLuu.Enabled = false;
+                btnXoa.Enabled = false;
+                btnXoaNV.Enabled = false;
             }
         }
 
@@ -134,6 +127,17 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
+            }
+            else
+            {
+                string pattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+                if (!Regex.IsMatch(txbEmail.Text, pattern))
+                {
+                    MessageBox.Show("Vui lòng nhập đúng định dạng email. \nVí dụ: abc@gmail.com", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    txbEmail.Focus();
+                    txbEmail.SelectAll();
+                    return false;   
+                }
             }
             return true;
         }
@@ -166,7 +170,7 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Lỗi tạo tài khoản mới!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Lỗi tạo tài khoản mới!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         }
                         try
@@ -184,22 +188,21 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
                             db.NhanVien.Add(newNV);
                             db.SaveChanges();
                             MessageBox.Show("Tạo thành công nhân viên mới", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
 
                         }
                         catch (Exception ex)
                         {
-                            MessageBox.Show("Lỗi tạo nhân viên mới!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Lỗi tạo nhân viên mới!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-
-
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi lấy dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi lấy dữ liệu!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            this.Close();
+            
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -236,7 +239,7 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Lỗi lấy dữ liệu!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Lỗi lấy dữ liệu!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 }
             }
