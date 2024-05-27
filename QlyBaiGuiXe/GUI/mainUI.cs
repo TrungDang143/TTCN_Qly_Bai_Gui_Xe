@@ -14,15 +14,15 @@ namespace QlyBaiGuiXe.GUI
     public partial class mainUI : Form
     {
         string nameChose = string.Empty;
-        NhanVien NV;
+        NhanVien currentNV =null;
         public bool isClose = true;
 
         public mainUI(NhanVien nv)
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
-            Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));                
-            NV = nv;
+            Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
+            currentNV = nv;
         }
         #region blur parent form
         static Setting.blurForm f;
@@ -133,7 +133,7 @@ namespace QlyBaiGuiXe.GUI
         {
             resetSelect();
             pnl_btnBaiXe_Click(pnl_btnBaiXe, EventArgs.Empty);
-            lbMaNV.Text = NV.HoTen + "\n" + NV.MaNv;
+            lbMaNV.Text = currentNV.HoTen + "\n" + currentNV.MaNv;
             int x = (panel4.Width - lbMaNV.Width) / 2;
             int y = (panel4.Height - lbMaNV.Height) / 2;
             lbMaNV.Location = new Point(x, y);
@@ -146,7 +146,7 @@ namespace QlyBaiGuiXe.GUI
             resetSelect();
             pnl_btnBaiXe.BackColor = System.Drawing.Color.MidnightBlue;
 
-            ucBaiXe newUC = new ucBaiXe(NV);
+            ucBaiXe newUC = new ucBaiXe(currentNV);
             pnlMain.Controls.Add(newUC);
         }
 
@@ -179,7 +179,7 @@ namespace QlyBaiGuiXe.GUI
             resetSelect();
             pnl_btnTaiKhoan.BackColor = System.Drawing.Color.MidnightBlue;
 
-            ucTaiKhoan newUC = new ucTaiKhoan();
+            ucTaiKhoan newUC = new ucTaiKhoan(currentNV);
             pnlMain.Controls.Add(newUC);
         }
 
