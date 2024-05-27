@@ -5,7 +5,7 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace QlyBaiGuiXe.EntityFramework
+namespace QlyBaiGuiXe.Entities
 {
     public partial class TaiKhoan
     {
@@ -14,7 +14,7 @@ namespace QlyBaiGuiXe.EntityFramework
             NhanVien = new HashSet<NhanVien>();
         }
 
-        public string MaTk { get; set; }
+        public int MaTk { get; set; }
         public string TenDangNhap { get; set; }
         public string MatKhau { get; set; }
 

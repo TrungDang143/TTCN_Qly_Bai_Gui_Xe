@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using QlyBaiGuiXe.EntityFramework;
+using QlyBaiGuiXe.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -155,7 +155,7 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
                     {
                         try
                         {
-                            EntityFramework.TaiKhoan newTK = new EntityFramework.TaiKhoan();
+                            Entities.TaiKhoan newTK = new Entities.TaiKhoan();
                             newTK.MatKhau = txbMk.Text;
                             newTK.TenDangNhap = txbMaNV.Text;
                             db.TaiKhoan.Add(newTK);
@@ -168,7 +168,7 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
                         }
                         try
                         {
-                            EntityFramework.NhanVien newNV = new EntityFramework.NhanVien();
+                            Entities.NhanVien newNV = new Entities.NhanVien();
 
                             newNV.MaNv = txbMaNV.Text;
                             newNV.HoTen = txbHoTen.Text;
@@ -222,8 +222,8 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
                 try
                 {
                     BaiXeDBContext db = new BaiXeDBContext();
-                    EntityFramework.NhanVien nvcanxoa = (from nv in db.NhanVien where nv.MaNv == txbMaNV.Text select nv).FirstOrDefault();
-                    EntityFramework.TaiKhoan tkcanxoa = (from tk in db.TaiKhoan where tk.MaTk == nvcanxoa.MaTk select tk).FirstOrDefault();
+                    Entities.NhanVien nvcanxoa = (from nv in db.NhanVien where nv.MaNv == txbMaNV.Text select nv).FirstOrDefault();
+                    Entities.TaiKhoan tkcanxoa = (from tk in db.TaiKhoan where tk.MaTk == nvcanxoa.MaTk select tk).FirstOrDefault();
                     db.Remove(nvcanxoa);
                     db.Remove(tkcanxoa);
                     db.SaveChanges();

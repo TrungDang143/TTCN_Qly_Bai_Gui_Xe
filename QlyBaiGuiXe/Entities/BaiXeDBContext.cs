@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace QlyBaiGuiXe.EntityFramework
+namespace QlyBaiGuiXe.Entities
 {
     public partial class BaiXeDBContext : DbContext
     {
@@ -38,7 +38,7 @@ namespace QlyBaiGuiXe.EntityFramework
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=BaiXeDB;Integrated Security=True;Encrypt=True;Trust Server Certificate=True");
+                optionsBuilder.UseSqlServer("Data Source=dTrung\\SQLEXPRESS;Initial Catalog=BaiXeDB;Integrated Security=True ");
             }
         }
 

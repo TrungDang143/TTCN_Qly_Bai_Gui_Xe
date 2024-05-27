@@ -194,20 +194,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityFramework\BaiXe.cs" />
-    <Compile Include="EntityFramework\BaiXeDBContext.cs" />
-    <Compile Include="EntityFramework\BangGia.cs" />
-    <Compile Include="EntityFramework\ChucVu.cs" />
-    <Compile Include="EntityFramework\GiaQuaDem.cs" />
-    <Compile Include="EntityFramework\HoaDon.cs" />
-    <Compile Include="EntityFramework\KhachHang.cs" />
-    <Compile Include="EntityFramework\LoaiVe.cs" />
-    <Compile Include="EntityFramework\LoaiXe.cs" />
-    <Compile Include="EntityFramework\NhanVien.cs" />
-    <Compile Include="EntityFramework\TaiKhoan.cs" />
-    <Compile Include="EntityFramework\VeLuot.cs" />
-    <Compile Include="EntityFramework\VeThang.cs" />
-    <Compile Include="EntityFramework\Xe.cs" />
+    <Compile Include="Entities\BaiXe.cs" />
+    <Compile Include="Entities\BaiXeDBContext.cs" />
+    <Compile Include="Entities\BangGia.cs" />
+    <Compile Include="Entities\ChucVu.cs" />
+    <Compile Include="Entities\GiaQuaDem.cs" />
+    <Compile Include="Entities\HoaDon.cs" />
+    <Compile Include="Entities\KhachHang.cs" />
+    <Compile Include="Entities\LoaiVe.cs" />
+    <Compile Include="Entities\LoaiXe.cs" />
+    <Compile Include="Entities\NhanVien.cs" />
+    <Compile Include="Entities\TaiKhoan.cs" />
+    <Compile Include="Entities\VeLuot.cs" />
+    <Compile Include="Entities\VeThang.cs" />
+    <Compile Include="Entities\Xe.cs" />
     <Compile Include="GUI\BaiXe\fBTbaiXe.cs">
       <SubType>Form</SubType>
     </Compile>

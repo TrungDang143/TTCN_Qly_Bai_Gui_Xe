@@ -5,24 +5,25 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace QlyBaiGuiXe.EntityFramework
+namespace QlyBaiGuiXe.Entities
 {
-    public partial class LoaiVe
+    public partial class LoaiXe
     {
-        public LoaiVe()
+        public LoaiXe()
         {
             BangGia = new HashSet<BangGia>();
             HoaDon = new HashSet<HoaDon>();
-            VeLuot = new HashSet<VeLuot>();
-            VeThang = new HashSet<VeThang>();
+            Xe = new HashSet<Xe>();
         }
 
-        public string MaLoaiVe { get; set; }
-        public string TenLoai { get; set; }
+        public string MaLoaiXe { get; set; }
+        public string TenXe { get; set; }
+        public string MaBaiXe { get; set; }
 
+        public virtual BaiXe MaBaiXeNavigation { get; set; }
+        public virtual GiaQuaDem GiaQuaDem { get; set; }
         public virtual ICollection<BangGia> BangGia { get; set; }
         public virtual ICollection<HoaDon> HoaDon { get; set; }
-        public virtual ICollection<VeLuot> VeLuot { get; set; }
-        public virtual ICollection<VeThang> VeThang { get; set; }
+        public virtual ICollection<Xe> Xe { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using QlyBaiGuiXe.GUI.BaiXe;
-using QlyBaiGuiXe.EntityFramework;
+using QlyBaiGuiXe.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -168,7 +168,7 @@ namespace QlyBaiGuiXe.GUI
                                  select bx;
                 if (queryBaiXe.Count() > 0)
                 {
-                    EntityFramework.BaiXe baiXe = queryBaiXe.SingleOrDefault();
+                    Entities.BaiXe baiXe = queryBaiXe.SingleOrDefault();
                     baiXe.SoLuong = baiXe.SoLuong - 1;
                     db.SaveChanges();
                 }
@@ -250,7 +250,7 @@ namespace QlyBaiGuiXe.GUI
                              select bx;
             if (queryBaiXe.Count() > 0)
             {
-                EntityFramework.BaiXe baiXe = queryBaiXe.SingleOrDefault();
+                Entities.BaiXe baiXe = queryBaiXe.SingleOrDefault();
                 baiXe.SoLuong = baiXe.SoLuong + 1;
                 db.SaveChanges();
             }
@@ -281,7 +281,7 @@ namespace QlyBaiGuiXe.GUI
                                  select bx;
                 if (queryBaiXe.Count() > 0)
                 {
-                    EntityFramework.BaiXe baiXe = queryBaiXe.SingleOrDefault();
+                    Entities.BaiXe baiXe = queryBaiXe.SingleOrDefault();
                     baiXe.SoLuong = baiXe.SoLuong + 1;
                     db.SaveChanges();
                 }

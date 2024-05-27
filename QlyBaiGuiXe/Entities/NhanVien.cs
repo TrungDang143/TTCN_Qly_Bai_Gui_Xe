@@ -5,7 +5,7 @@ using System.Collections.Generic;
 // If you have enabled NRTs for your project, then un-comment the following line:
 // #nullable disable
 
-namespace QlyBaiGuiXe.EntityFramework
+namespace QlyBaiGuiXe.Entities
 {
     public partial class NhanVien
     {
@@ -15,7 +15,7 @@ namespace QlyBaiGuiXe.EntityFramework
         public DateTime NgaySinh { get; set; }
         public bool GioiTinh { get; set; }
         public string Email { get; set; }
-        public string MaTk { get; set; }
+        public int MaTk { get; set; }
         public string MaCv { get; set; }
 
         public virtual ChucVu MaCvNavigation { get; set; }
