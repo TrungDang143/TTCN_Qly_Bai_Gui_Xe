@@ -41,7 +41,7 @@ namespace QlyBaiGuiXe.GUI
                               nv.HoTen,
                               cv.TenCv,
                               nv.Sdt,
-                              nv.NgaySinh,
+                              ngaysinh = nv.NgaySinh.Date.ToString("dd/MM/yyyy"),
                               GioiTinh = nv.GioiTinh == true ? "Nam" : "Nữ",
                           };
 
@@ -64,6 +64,9 @@ namespace QlyBaiGuiXe.GUI
             cbbGioiTinh.Items.Add("Nam");
             cbbGioiTinh.Items.Add("Nữ");
 
+            dtpkNgaySinh.Format = DateTimePickerFormat.Custom;
+            dtpkNgaySinh.CustomFormat = "dd/MM/yyyy";
+
             try
             {
                 txbChucVu.Text = (from cv in db.ChucVu
@@ -74,6 +77,7 @@ namespace QlyBaiGuiXe.GUI
                 txbMaNhanVien.Text = currentNV.MaNv;
                 txbSDT.Text = currentNV.Sdt;
                 cbbGioiTinh.SelectedIndex = currentNV.GioiTinh == true ? 0 : 1;
+                dtpkNgaySinh.Value = currentNV.NgaySinh;
 
             }
             catch (Exception ex)
@@ -105,6 +109,12 @@ namespace QlyBaiGuiXe.GUI
             fQlyNhanVien newform = new fQlyNhanVien(choseNV);
             newform.ShowDialog();
             newF.closeBlur();
+
+            if (choseNV.Equals(currentNV.MaNv))
+            {
+                DialogResult ok = MessageBox.Show("Vui lòng đăng nhập lại hệ thống!", "Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                btnDangXuat.PerformClick();
+            }
             loadData();
             choseNV = string.Empty;
         }
