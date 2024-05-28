@@ -307,6 +307,7 @@
       <DependentUpon>blurForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Setting\BoForm.cs" />
+    <Compile Include="Setting\sendEmail.cs" />
     <Compile Include="Setting\TitleBar.cs" />
     <EmbeddedResource Include="GUI\BaiXe\fBTbaiXe.resx">
       <DependentUpon>fBTbaiXe.cs</DependentUpon>

@@ -163,8 +163,6 @@ namespace QlyBaiGuiXe.GUI
             mainF.isClose = false;
             mainF.Close();
         }
-
-        bool changed = false;
         private void btnLuu_Click(object sender, EventArgs e)
         {
             if(checkHopLe())
@@ -223,7 +221,6 @@ namespace QlyBaiGuiXe.GUI
         }
         private void txbHoTen_TextChanged(object sender, EventArgs e)
         {
-            changed = true;
             btnLuu.Enabled = true;
         }
 

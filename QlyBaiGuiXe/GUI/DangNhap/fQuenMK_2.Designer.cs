@@ -33,13 +33,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnXacNhan = new System.Windows.Forms.Button();
             this.txbN1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbEmail = new System.Windows.Forms.Label();
             this.txbN2 = new System.Windows.Forms.TextBox();
             this.txbN3 = new System.Windows.Forms.TextBox();
             this.txbN4 = new System.Windows.Forms.TextBox();
             this.lbCanhBao = new System.Windows.Forms.Label();
+            this.lbGuiLai = new System.Windows.Forms.LinkLabel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel7
@@ -94,15 +97,15 @@
             this.txbN1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txbN1.TextChanged += new System.EventHandler(this.txbN1_TextChanged);
             // 
-            // label2
+            // lbEmail
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 131);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(369, 20);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "Mã xác nhận được gửi về email: abc@gmail.com";
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEmail.Location = new System.Drawing.Point(11, 10);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(369, 20);
+            this.lbEmail.TabIndex = 18;
+            this.lbEmail.Text = "Mã xác nhận được gửi về email: abc@gmail.com";
             // 
             // txbN2
             // 
@@ -149,13 +152,34 @@
             this.lbCanhBao.Text = "Nhập mã gồm 4 ký tự";
             this.lbCanhBao.Visible = false;
             // 
+            // lbGuiLai
+            // 
+            this.lbGuiLai.AutoSize = true;
+            this.lbGuiLai.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbGuiLai.Location = new System.Drawing.Point(165, 374);
+            this.lbGuiLai.Name = "lbGuiLai";
+            this.lbGuiLai.Size = new System.Drawing.Size(85, 20);
+            this.lbGuiLai.TabIndex = 19;
+            this.lbGuiLai.TabStop = true;
+            this.lbGuiLai.Text = "Gửi lại mã";
+            this.lbGuiLai.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lbGuiLai_LinkClicked);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lbEmail);
+            this.panel1.Location = new System.Drawing.Point(30, 122);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(386, 56);
+            this.panel1.TabIndex = 20;
+            // 
             // fQuenMK_2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 398);
+            this.ClientSize = new System.Drawing.Size(440, 418);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lbGuiLai);
             this.Controls.Add(this.lbCanhBao);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.txbN4);
             this.Controls.Add(this.txbN3);
             this.Controls.Add(this.txbN2);
@@ -170,6 +194,8 @@
             this.Load += new System.EventHandler(this.fQuenMK_2_Load);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,10 +208,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnXacNhan;
         private System.Windows.Forms.TextBox txbN1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbEmail;
         private System.Windows.Forms.TextBox txbN2;
         private System.Windows.Forms.TextBox txbN3;
         private System.Windows.Forms.TextBox txbN4;
         private System.Windows.Forms.Label lbCanhBao;
+        private System.Windows.Forms.LinkLabel lbGuiLai;
+        private System.Windows.Forms.Panel panel1;
     }
 }

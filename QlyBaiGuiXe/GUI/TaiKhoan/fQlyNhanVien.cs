@@ -105,6 +105,7 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
 
                 txbMaNV.ReadOnly = true;
                 txbMaNV.BackColor = System.Drawing.Color.Lavender;
+
                 btnXoa.Enabled = false;
                 btnTaoNV.Enabled = false;
             }

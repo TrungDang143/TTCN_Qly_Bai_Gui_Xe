@@ -98,6 +98,7 @@
             this.txbMk2.PasswordChar = '•';
             this.txbMk2.Size = new System.Drawing.Size(245, 30);
             this.txbMk2.TabIndex = 1;
+            this.txbMk2.TextChanged += new System.EventHandler(this.txbMk1_TextChanged);
             // 
             // label1
             // 
@@ -141,6 +142,7 @@
             this.txbMk1.PasswordChar = '•';
             this.txbMk1.Size = new System.Drawing.Size(245, 30);
             this.txbMk1.TabIndex = 3;
+            this.txbMk1.TextChanged += new System.EventHandler(this.txbMk1_TextChanged);
             // 
             // panel3
             // 

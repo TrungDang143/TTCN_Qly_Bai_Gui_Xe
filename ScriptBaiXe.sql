@@ -28,7 +28,7 @@ Create table [NhanVien]
 	[SDT] varchar(11) NOT NULL,
 	[ngaySinh] Datetime NOT NULL,
 	[gioiTinh] Bit NOT NULL,
-	[email] varchar(20) NOT NULL,
+	[email] varchar(50) NOT NULL,
 	[maTK] int NOT NULL,
 	[maCV] varchar(10) NOT NULL,
 Primary Key ([maNV])
@@ -224,8 +224,8 @@ insert into ChucVu values("nv", N'Nhân viên')
 insert into ChucVu values("ql", N'Quản lý')
 
 
-insert into TaiKhoan values("nv1", "1111")
-insert into NhanVien values("nv1", "dTrung", "0123456978", "2024/12/12", 1, "abc@gmail.com", 1, "ql")
+insert into TaiKhoan values("admin", "1111")
+insert into NhanVien values("admin", "dTrung", "0123456978", "2024/12/12", 1, "abc@gmail.com", 1, "ql")
 
 
 --sinh vé lượt theo kích thước bãi xe

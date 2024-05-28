@@ -262,7 +262,7 @@ namespace QlyBaiGuiXe.Entities
                 entity.Property(e => e.Email)
                     .IsRequired()
                     .HasColumnName("email")
-                    .HasMaxLength(20)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.GioiTinh).HasColumnName("gioiTinh");
