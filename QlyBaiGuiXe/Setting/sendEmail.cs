@@ -20,7 +20,9 @@ namespace QlyBaiGuiXe.Setting
                 MailMessage mailMessage = new MailMessage();
                 SmtpClient smtpClient = new SmtpClient();
 
-                mailMessage.From = new MailAddress("1facebook.sieunhan.thanhly@gmail.com");
+                MailAddress fromAddress = new MailAddress("1facebook.sieunhan.thanhly@gmail.com", "Quản lý bãi gửi xe");
+
+                mailMessage.From = fromAddress;
                 mailMessage.To.Add(toEmail);
                 mailMessage.Subject = "Mã khôi khục mật khẩu - Quản lý bãi gửi xe";
                 string code = createCODE();

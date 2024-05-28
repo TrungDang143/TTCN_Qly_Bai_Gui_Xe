@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQlyNhanVien));
             this.cbbGioiTinh = new System.Windows.Forms.ComboBox();
             this.btnXoaNV = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
@@ -332,6 +333,7 @@
             this.Controls.Add(this.txbMaNV);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel7);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fQlyNhanVien";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "fQlyNhanVien";
