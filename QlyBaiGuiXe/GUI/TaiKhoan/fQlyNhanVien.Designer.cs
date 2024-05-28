@@ -149,7 +149,7 @@
             // dtpk
             // 
             this.dtpk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpk.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpk.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpk.Location = new System.Drawing.Point(569, 164);
             this.dtpk.Name = "dtpk";
             this.dtpk.Size = new System.Drawing.Size(229, 28);
@@ -175,6 +175,7 @@
             this.btnLuu.TabIndex = 62;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // txbSDT
             // 

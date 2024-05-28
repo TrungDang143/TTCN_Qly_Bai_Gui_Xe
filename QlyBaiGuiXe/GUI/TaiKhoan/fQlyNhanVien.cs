@@ -26,7 +26,6 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(Setting.BoForm.CreateRoundRectRgn(0, 0, Width, Height, 30, 30));
-
         }
 
         private void panel7_MouseDown(object sender, MouseEventArgs e)
@@ -63,7 +62,7 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
         private void fQlyNhanVien_Load(object sender, EventArgs e)
         {
             BaiXeDBContext db = new BaiXeDBContext();
-            
+
             dtpk.Format = DateTimePickerFormat.Custom;
             dtpk.CustomFormat = "dd/MM/yyyy";
 
@@ -102,12 +101,13 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
                 txbSDT.Text = query.Sdt;
                 cbbChucVu.Text = query.TenCv;
                 cbbGioiTinh.Text = query.GioiTinh ? "Nam" : "Nữ";
+                dtpk.Value = query.NgaySinh;
 
                 txbMaNV.ReadOnly = true;
                 txbMaNV.BackColor = System.Drawing.Color.Lavender;
 
-                btnTaoNV.Enabled = false;
                 btnXoa.Enabled = false;
+                btnTaoNV.Enabled = false;
             }
             else
             {
@@ -215,7 +215,7 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
             txbSDT.Text = string.Empty;
             cbbChucVu.Text = string.Empty;
             cbbGioiTinh.Text = string.Empty;
-            dtpk.Value = DateTime.Now;
+            dtpk.Value = DateTime.Now.Date;
 
             txbMaNV.ReadOnly = false;
             txbMaNV.BackColor = SystemColors.Window;
@@ -242,6 +242,52 @@ namespace QlyBaiGuiXe.GUI.TaiKhoan
                 {
                     MessageBox.Show("Lỗi lấy dữ liệu!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                }
+            }
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            if (checkHopLe())
+            {
+                try
+                {
+                    BaiXeDBContext db = new BaiXeDBContext();
+                    NhanVien nv = db.NhanVien.Find(choseNV);
+                    try
+                    {
+                        Entities.TaiKhoan tk = db.TaiKhoan.Find(nv.MaTk);
+                        tk.MatKhau = txbMk.Text;
+
+                        db.SaveChanges();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi cập nhật tài khoản!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                    try
+                    {  
+                        nv.HoTen = txbHoTen.Text;
+                        nv.GioiTinh = true ? cbbGioiTinh.Text.CompareTo("Nam") == 0 : false;
+                        nv.NgaySinh = dtpk.Value.Date;
+                        nv.Sdt = txbSDT.Text;
+                        nv.Email = txbEmail.Text;
+                        nv.MaCv = (from cv in db.ChucVu where cv.TenCv == cbbChucVu.Text select cv.MaCv).FirstOrDefault();
+
+                        db.SaveChanges();
+                        MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi cập nhật thông tin nhân viên!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi lấy dữ liệu!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
