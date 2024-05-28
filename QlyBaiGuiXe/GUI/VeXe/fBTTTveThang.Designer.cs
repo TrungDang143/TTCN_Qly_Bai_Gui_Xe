@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fBTTTveThang));
             this.cbbLoaiXe = new System.Windows.Forms.ComboBox();
             this.dtpkTH = new System.Windows.Forms.DateTimePicker();
             this.btnHuy = new System.Windows.Forms.Button();
@@ -366,6 +367,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fBTTTveThang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "fBTTTveThang";

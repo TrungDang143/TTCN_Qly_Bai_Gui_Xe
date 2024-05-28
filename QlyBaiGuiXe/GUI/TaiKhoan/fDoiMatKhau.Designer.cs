@@ -28,34 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fDoiMatKhau));
             this.lbCanhBao = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.picMk3 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.txbMk2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.picMk1 = new System.Windows.Forms.PictureBox();
             this.txbMkCu = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnGuiMa = new System.Windows.Forms.Button();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.picMk2 = new System.Windows.Forms.PictureBox();
             this.txbMk1 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.picMk3 = new System.Windows.Forms.PictureBox();
-            this.picMk2 = new System.Windows.Forms.PictureBox();
-            this.picMk1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMk3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMk2)).BeginInit();
+            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picMk1)).BeginInit();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMk2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -83,6 +84,17 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(260, 41);
             this.panel5.TabIndex = 21;
+            // 
+            // picMk3
+            // 
+            this.picMk3.Image = global::QlyBaiGuiXe.Properties.Resources.view;
+            this.picMk3.Location = new System.Drawing.Point(227, 8);
+            this.picMk3.Name = "picMk3";
+            this.picMk3.Size = new System.Drawing.Size(30, 30);
+            this.picMk3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picMk3.TabIndex = 17;
+            this.picMk3.TabStop = false;
+            this.picMk3.Click += new System.EventHandler(this.picMk2_Click);
             // 
             // panel6
             // 
@@ -125,6 +137,17 @@
             this.panel4.Size = new System.Drawing.Size(260, 41);
             this.panel4.TabIndex = 22;
             // 
+            // picMk1
+            // 
+            this.picMk1.Image = global::QlyBaiGuiXe.Properties.Resources.view;
+            this.picMk1.Location = new System.Drawing.Point(227, 8);
+            this.picMk1.Name = "picMk1";
+            this.picMk1.Size = new System.Drawing.Size(30, 30);
+            this.picMk1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picMk1.TabIndex = 17;
+            this.picMk1.TabStop = false;
+            this.picMk1.Click += new System.EventHandler(this.picMk_Click);
+            // 
             // txbMkCu
             // 
             this.txbMkCu.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -164,6 +187,17 @@
             this.panel7.TabIndex = 30;
             this.panel7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel7_MouseDown);
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::QlyBaiGuiXe.Properties.Resources.right_arrow___Copy;
+            this.pictureBox6.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(20, 20);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
@@ -174,6 +208,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(260, 41);
             this.panel1.TabIndex = 22;
+            // 
+            // picMk2
+            // 
+            this.picMk2.Image = global::QlyBaiGuiXe.Properties.Resources.view;
+            this.picMk2.Location = new System.Drawing.Point(227, 8);
+            this.picMk2.Name = "picMk2";
+            this.picMk2.Size = new System.Drawing.Size(30, 30);
+            this.picMk2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picMk2.TabIndex = 17;
+            this.picMk2.TabStop = false;
+            this.picMk2.Click += new System.EventHandler(this.picMk1_Click);
             // 
             // txbMk1
             // 
@@ -194,50 +239,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(260, 3);
             this.panel2.TabIndex = 2;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::QlyBaiGuiXe.Properties.Resources.right_arrow___Copy;
-            this.pictureBox6.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(20, 20);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
-            // 
-            // picMk3
-            // 
-            this.picMk3.Image = global::QlyBaiGuiXe.Properties.Resources.view;
-            this.picMk3.Location = new System.Drawing.Point(227, 8);
-            this.picMk3.Name = "picMk3";
-            this.picMk3.Size = new System.Drawing.Size(30, 30);
-            this.picMk3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picMk3.TabIndex = 17;
-            this.picMk3.TabStop = false;
-            this.picMk3.Click += new System.EventHandler(this.picMk2_Click);
-            // 
-            // picMk2
-            // 
-            this.picMk2.Image = global::QlyBaiGuiXe.Properties.Resources.view;
-            this.picMk2.Location = new System.Drawing.Point(227, 8);
-            this.picMk2.Name = "picMk2";
-            this.picMk2.Size = new System.Drawing.Size(30, 30);
-            this.picMk2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picMk2.TabIndex = 17;
-            this.picMk2.TabStop = false;
-            this.picMk2.Click += new System.EventHandler(this.picMk1_Click);
-            // 
-            // picMk1
-            // 
-            this.picMk1.Image = global::QlyBaiGuiXe.Properties.Resources.view;
-            this.picMk1.Location = new System.Drawing.Point(227, 8);
-            this.picMk1.Name = "picMk1";
-            this.picMk1.Size = new System.Drawing.Size(30, 30);
-            this.picMk1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picMk1.TabIndex = 17;
-            this.picMk1.TabStop = false;
-            this.picMk1.Click += new System.EventHandler(this.picMk_Click);
             // 
             // pictureBox3
             // 
@@ -284,20 +285,21 @@
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pictureBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fDoiMatKhau";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "fDoiMatKhau";
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMk3)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMk1)).EndInit();
             this.panel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMk3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picMk2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMk1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fQuenMK_3));
             this.panel7 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.picMk2 = new System.Windows.Forms.PictureBox();
@@ -208,6 +209,7 @@
             this.Controls.Add(this.btnGuiMa);
             this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.pictureBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "fQuenMK_3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "fQuenMK_3";
