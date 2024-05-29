@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fBTTTveThang));
             this.cbbLoaiXe = new System.Windows.Forms.ComboBox();
             this.dtpkTH = new System.Windows.Forms.DateTimePicker();
@@ -37,29 +38,29 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txbMucPhi = new System.Windows.Forms.TextBox();
+            this.txbChuXe = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txbMaVe = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvVT = new System.Windows.Forms.DataGridView();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbSDT = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.txbDiaChi = new System.Windows.Forms.TextBox();
+            this.cbbGioiTinh = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txbMucPhi = new System.Windows.Forms.TextBox();
             this.btnXoa = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txbTimKiem = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVT)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,6 +72,7 @@
             this.cbbLoaiXe.Name = "cbbLoaiXe";
             this.cbbLoaiXe.Size = new System.Drawing.Size(230, 30);
             this.cbbLoaiXe.TabIndex = 40;
+            this.cbbLoaiXe.SelectedIndexChanged += new System.EventHandler(this.cbbLoaiXe_SelectedIndexChanged);
             // 
             // dtpkTH
             // 
@@ -102,6 +104,7 @@
             this.btnLuu.TabIndex = 36;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // txbBienSo
             // 
@@ -141,14 +144,14 @@
             this.label5.TabIndex = 34;
             this.label5.Text = "Loại xe";
             // 
-            // txbMucPhi
+            // txbChuXe
             // 
-            this.txbMucPhi.BackColor = System.Drawing.Color.Lavender;
-            this.txbMucPhi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbMucPhi.Location = new System.Drawing.Point(142, 253);
-            this.txbMucPhi.Name = "txbMucPhi";
-            this.txbMucPhi.Size = new System.Drawing.Size(230, 28);
-            this.txbMucPhi.TabIndex = 29;
+            this.txbChuXe.BackColor = System.Drawing.Color.Lavender;
+            this.txbChuXe.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbChuXe.Location = new System.Drawing.Point(142, 253);
+            this.txbChuXe.Name = "txbChuXe";
+            this.txbChuXe.Size = new System.Drawing.Size(230, 28);
+            this.txbChuXe.TabIndex = 29;
             // 
             // label6
             // 
@@ -210,15 +213,26 @@
             this.label1.TabIndex = 23;
             this.label1.Text = "Bảo trì thông tin vé tháng";
             // 
-            // dataGridView1
+            // dgvVT
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(411, 165);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(534, 401);
-            this.dataGridView1.TabIndex = 41;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvVT.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvVT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVT.Location = new System.Drawing.Point(411, 165);
+            this.dgvVT.MultiSelect = false;
+            this.dgvVT.Name = "dgvVT";
+            this.dgvVT.ReadOnly = true;
+            this.dgvVT.RowHeadersWidth = 51;
+            this.dgvVT.RowTemplate.Height = 24;
+            this.dgvVT.Size = new System.Drawing.Size(534, 401);
+            this.dgvVT.TabIndex = 41;
+            this.dgvVT.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVT_CellClick);
             // 
             // label4
             // 
@@ -230,13 +244,13 @@
             this.label4.TabIndex = 26;
             this.label4.Text = "SĐT";
             // 
-            // textBox1
+            // txbSDT
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(142, 384);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(230, 28);
-            this.textBox1.TabIndex = 29;
+            this.txbSDT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbSDT.Location = new System.Drawing.Point(142, 384);
+            this.txbSDT.Name = "txbSDT";
+            this.txbSDT.Size = new System.Drawing.Size(230, 28);
+            this.txbSDT.TabIndex = 29;
             // 
             // label7
             // 
@@ -258,22 +272,22 @@
             this.label9.TabIndex = 32;
             this.label9.Text = "Địa chỉ";
             // 
-            // textBox2
+            // txbDiaChi
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(142, 341);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(230, 28);
-            this.textBox2.TabIndex = 35;
+            this.txbDiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbDiaChi.Location = new System.Drawing.Point(142, 341);
+            this.txbDiaChi.Name = "txbDiaChi";
+            this.txbDiaChi.Size = new System.Drawing.Size(230, 28);
+            this.txbDiaChi.TabIndex = 35;
             // 
-            // comboBox1
+            // cbbGioiTinh
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(142, 296);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(230, 30);
-            this.comboBox1.TabIndex = 40;
+            this.cbbGioiTinh.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbGioiTinh.FormattingEnabled = true;
+            this.cbbGioiTinh.Location = new System.Drawing.Point(142, 296);
+            this.cbbGioiTinh.Name = "cbbGioiTinh";
+            this.cbbGioiTinh.Size = new System.Drawing.Size(230, 30);
+            this.cbbGioiTinh.TabIndex = 40;
             // 
             // label10
             // 
@@ -285,15 +299,15 @@
             this.label10.TabIndex = 26;
             this.label10.Text = "Mức phí";
             // 
-            // textBox3
+            // txbMucPhi
             // 
-            this.textBox3.BackColor = System.Drawing.Color.Lavender;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(142, 428);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.ReadOnly = true;
-            this.textBox3.Size = new System.Drawing.Size(230, 28);
-            this.textBox3.TabIndex = 29;
+            this.txbMucPhi.BackColor = System.Drawing.Color.Lavender;
+            this.txbMucPhi.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbMucPhi.Location = new System.Drawing.Point(142, 428);
+            this.txbMucPhi.Name = "txbMucPhi";
+            this.txbMucPhi.ReadOnly = true;
+            this.txbMucPhi.Size = new System.Drawing.Size(230, 28);
+            this.txbMucPhi.TabIndex = 29;
             // 
             // btnXoa
             // 
@@ -343,25 +357,25 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txbTimKiem);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.dgvVT);
+            this.Controls.Add(this.cbbGioiTinh);
             this.Controls.Add(this.cbbLoaiXe);
             this.Controls.Add(this.dtpkTH);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnHuy);
             this.Controls.Add(this.btnLuu);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txbDiaChi);
             this.Controls.Add(this.txbBienSo);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.txbMucPhi);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txbSDT);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txbChuXe);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txbMaVe);
             this.Controls.Add(this.label3);
@@ -374,7 +388,7 @@
             this.Load += new System.EventHandler(this.fBTTTveThang_Load);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVT)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -392,21 +406,21 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txbMucPhi;
+        private System.Windows.Forms.TextBox txbChuXe;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txbMaVe;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvVT;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbSDT;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox txbDiaChi;
+        private System.Windows.Forms.ComboBox cbbGioiTinh;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txbMucPhi;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox txbTimKiem;
