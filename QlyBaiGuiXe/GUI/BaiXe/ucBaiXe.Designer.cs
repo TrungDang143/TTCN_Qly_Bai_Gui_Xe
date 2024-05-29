@@ -92,6 +92,7 @@
             this.cbbLoaiVe.Name = "cbbLoaiVe";
             this.cbbLoaiVe.Size = new System.Drawing.Size(197, 30);
             this.cbbLoaiVe.TabIndex = 2;
+            this.cbbLoaiVe.SelectedIndexChanged += new System.EventHandler(this.cbbLoaiVe_SelectedIndexChanged);
             // 
             // txbBienSo
             // 

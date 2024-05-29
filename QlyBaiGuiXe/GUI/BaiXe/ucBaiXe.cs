@@ -25,6 +25,10 @@ namespace QlyBaiGuiXe.GUI
             InitializeComponent();
             ucBaiXeLoad();
             NV = nv;
+            LoadComboBox_LoaiVe();
+            LoadComboBox_LoaiXe();
+            cbbLoaiVe.SelectedIndex = 0;
+            cbbLoaiXe.SelectedIndex = 0;
         }
         private void LoadComboBox_LoaiVe()
         {
@@ -44,14 +48,21 @@ namespace QlyBaiGuiXe.GUI
                 cbbLoaiXe.Items.Add(loaix);
             }
         }
-
+        //private void LoadMaVe()
+        //{
+        //    if (cbbLoaiVe.SelectedIndex == 0)
+        //    {
+        //        string ve = sinhMaVe();
+        //        txbMaVe.Text = ve;
+        //    }
+        //    else
+        //    {
+        //        txbMaVe.Text = null;
+        //    }
+        //}
         private void ucBaiXeLoad()
         {
-            // load combo box
-            LoadComboBox_LoaiVe();
-            LoadComboBox_LoaiXe();
-            cbbLoaiVe.SelectedIndex = 0;
-            cbbLoaiXe.SelectedIndex = 0;
+            txbMaVe.Text = sinhMaVe();
             // load data grid view
             dgvBaiXe.AutoGenerateColumns = true;
             var queryBaiXe = from hd in db.HoaDon
@@ -111,34 +122,83 @@ namespace QlyBaiGuiXe.GUI
                      .Select(vl => vl.MaVe)
                      .FirstOrDefault();
         }
+
+        public string getMaLoaiVe()
+        {
+            try
+            {
+                var a = (from mlv in db.LoaiVe
+                         where mlv.TenLoai == cbbLoaiVe.SelectedItem.ToString()
+                         select mlv.MaLoaiVe).SingleOrDefault();
+                return a.ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi lấy mã loại vé!", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                throw;
+            }
+        }
+        public string getMaLoaiXe()
+        {
+            try
+            {
+                var a = (from mlx in db.LoaiXe
+                         where mlx.TenXe == cbbLoaiXe.SelectedItem.ToString()
+                         select mlx.MaLoaiXe).SingleOrDefault();
+                return a.ToString();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi lấy mã loại xe!", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                throw;
+            }
+        }
         private void query_ThemXe(string ve)
         {
-            HoaDon newHD = new HoaDon();
-            newHD.TgVao = DateTime.Now;
-            newHD.TgRa = null;
-            newHD.MaVe = ve;
-            newHD.MaLoaiVe = cbbLoaiVe.SelectedItem.ToString();
-            newHD.MaNv = NV.MaNv;
-            var a = (from mlx in db.LoaiXe
-                    where mlx.TenXe == cbbLoaiXe.SelectedItem.ToString()
-                    select mlx.MaLoaiXe).SingleOrDefault();
-
-            newHD.MaLoaiXe = a;
-            db.HoaDon.Add(newHD);
-            db.SaveChanges();
-            MessageBox.Show("Nhập xe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                HoaDon newHD = new HoaDon();
+                newHD.TgVao = DateTime.Now;
+                newHD.TgRa = null;
+                newHD.MaVe = ve;
+                newHD.MaLoaiVe = getMaLoaiVe();
+                newHD.MaNv = NV.MaNv;
+                newHD.MaLoaiXe = getMaLoaiXe();
+                db.HoaDon.Add(newHD);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi thêm hóa đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                throw;
+            }
+ 
         }
         private bool Check_NhapXe()
         {
+            try
+            {
 
-            var soluong = (from bx in db.BaiXe
-                           join lx in db.LoaiXe on bx.MaBaiXe equals lx.MaBaiXe
-                           where lx.TenXe == cbbLoaiXe.SelectedItem.ToString()
-                           select bx.SoLuong).FirstOrDefault();
-            return true ? soluong > 0 : false;
+                var soluong = (from bx in db.BaiXe
+                               join lx in db.LoaiXe on bx.MaBaiXe equals lx.MaBaiXe
+                               where lx.TenXe == cbbLoaiXe.Text
+                               select bx.SoLuong).FirstOrDefault();
+                return soluong >= 1 ? true : false;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi lấy số lượng xe trong bãi!", "Lỗi cơ sở dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                throw;
+            }
         }
         public bool isCheck()
         {
+            if(cbbLoaiVe.SelectedIndex == 1 && txbMaVe.Text == string.Empty)
+            {
+                MessageBox.Show("Bạn chưa nhập mã vé tháng!", "Nhập dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cbbLoaiVe.Focus();
+                return false;
+            }
             if (cbbLoaiVe.Text == string.Empty)
             {
                 MessageBox.Show("Bạn chưa chọn loại vé!", "Nhập dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -180,29 +240,42 @@ namespace QlyBaiGuiXe.GUI
         }
         private void update_NhapVeLuot(string ve)
         {
-            var queryUpdateVeLuot = from sua in db.VeLuot
-                                    where sua.MaVe == ve
-                                    select sua;
-            if(queryUpdateVeLuot.Count() > 0)
+            try
             {
-                VeLuot veLuot = queryUpdateVeLuot.SingleOrDefault();
-                veLuot.BienSo = txbBienSo.Text;
-                db.SaveChanges();
+                var queryUpdateVeLuot = from bienSo in db.VeLuot
+                                        join hd in db.HoaDon on bienSo.MaVe equals hd.MaVe
+                                        where bienSo.MaVe == ve && hd.TgRa == null
+                                        select bienSo;
+                if (queryUpdateVeLuot.Count() > 0)
+                {
+                    VeLuot veLuot = queryUpdateVeLuot.SingleOrDefault();
+                    veLuot.BienSo = txbBienSo.Text;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi cập nhật biển số cho loại vé!", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                throw;
             }
         }
         private void reset()
         {
+            txbBienSo.Text = null;
+            cbbLoaiVe.SelectedIndex = 0;
+            cbbLoaiXe.SelectedIndex = 0;
+            txbMaVe.Text = null;
         }
         private void btnNhapXe_Click(object sender, EventArgs e)
         {
             //xu ly sql
             if (isCheck() == true)
             {
-                string ve = sinhMaVe();
-                query_ThemXe(ve);
-                update_NhapVeLuot(ve);
+                query_ThemXe(sinhMaVe());
+                update_NhapVeLuot(sinhMaVe());
                 update_ThemBaiXe();
                 ucBaiXeLoad();
+                reset();
+                MessageBox.Show("Nhập xe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -232,6 +305,8 @@ namespace QlyBaiGuiXe.GUI
                     HoaDon updateHoaDon = queryHoaDon;
                     updateHoaDon.TgRa = DateTime.Now;
                     db.SaveChanges();
+                    update_XuatBaiXe();
+                    ucBaiXeLoad();
                     MessageBox.Show("Xuất xe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -244,15 +319,23 @@ namespace QlyBaiGuiXe.GUI
 
         private void update_XuatBaiXe()
         {
-            var queryBaiXe = from bx in db.BaiXe
-                             join lx in db.LoaiXe on bx.MaBaiXe equals lx.MaBaiXe
-                             where lx.TenXe == cbbLoaiXe.SelectedItem.ToString()
-                             select bx;
-            if (queryBaiXe.Count() > 0)
+            try
             {
-                Entities.BaiXe baiXe = queryBaiXe.SingleOrDefault();
-                baiXe.SoLuong = baiXe.SoLuong + 1;
-                db.SaveChanges();
+                var queryBaiXe = from bx in db.BaiXe
+                                 join lx in db.LoaiXe on bx.MaBaiXe equals lx.MaBaiXe
+                                 where lx.TenXe == cbbLoaiXe.SelectedItem.ToString()
+                                 select bx;
+                if (queryBaiXe.Count() > 0)
+                {
+                    Entities.BaiXe baiXe = queryBaiXe.SingleOrDefault();
+                    baiXe.SoLuong = baiXe.SoLuong + 1;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Cập nhật xe ra khỏi bãi không thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                throw;
             }
         }
 
@@ -269,26 +352,6 @@ namespace QlyBaiGuiXe.GUI
             else
             {
                 return false;
-            }
-        }
-        private void update_XoaBaiXe()
-        {
-            if (Check_XuatXe())
-            {
-                var queryBaiXe = from bx in db.BaiXe
-                                 join lx in db.LoaiXe on bx.MaBaiXe equals lx.MaBaiXe
-                                 where lx.TenXe == cbbLoaiXe.SelectedItem.ToString()
-                                 select bx;
-                if (queryBaiXe.Count() > 0)
-                {
-                    Entities.BaiXe baiXe = queryBaiXe.SingleOrDefault();
-                    baiXe.SoLuong = baiXe.SoLuong + 1;
-                    db.SaveChanges();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Sỗ lượng chỗ đã full! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         bool daChon = false;
@@ -311,5 +374,20 @@ namespace QlyBaiGuiXe.GUI
             }
         }
 
+        private void cbbLoaiVe_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbLoaiVe.SelectedIndex == 0)
+            {
+
+                txbMaVe.Text = sinhMaVe();
+                txbMaVe.ReadOnly = true;
+
+            }
+            else if (cbbLoaiVe.SelectedIndex == 1)
+            {
+                txbMaVe.ReadOnly = false;
+                txbMaVe.Text = null;
+            }
+        }
     }
 }

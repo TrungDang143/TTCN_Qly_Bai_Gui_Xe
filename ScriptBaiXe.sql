@@ -226,8 +226,15 @@ insert into ChucVu values("ql", N'Quản lý')
 
 insert into TaiKhoan values("admin", "1111")
 insert into NhanVien values("admin", "dTrung", "0123456978", "2024/12/12", 1, "abc@gmail.com", 1, "ql")
+select * from LoaiXe
+select * from LoaiVe
 
+select * from HoaDon
+select * from BaiXe
+delete from HoaDon
 
+select * from VeLuot
+delete from VeLuot
 --sinh vé lượt theo kích thước bãi xe
 create procedure inVe as
 begin
