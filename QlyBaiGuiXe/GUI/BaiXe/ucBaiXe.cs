@@ -20,6 +20,7 @@ namespace QlyBaiGuiXe.GUI
     {
         BaiXeDBContext db = new BaiXeDBContext();
         NhanVien currentNV;
+        HoaDon hoadon;
         public ucBaiXe(NhanVien nv)
         {
             InitializeComponent();
@@ -113,17 +114,24 @@ namespace QlyBaiGuiXe.GUI
 
         private void btnBTTTve_Click(object sender, EventArgs e)
         {
-            //neu chon trong dgv
+            
+            if(hoadon != null)
+            {
+                Panel mainPanel = this.Parent as Panel;
+                mainUI mainForm = mainPanel.Parent as mainUI;
 
-            //neu ko chon
-            Panel mainPanel = this.Parent as Panel;
-            mainUI mainForm = mainPanel.Parent as mainUI;
+                mainForm.showBlur();
+                fBTTTve newForm = new fBTTTve(hoadon);
+                newForm.ShowDialog();
 
-            mainForm.showBlur();
-            fBTTTve newForm = new fBTTTve();
-            newForm.ShowDialog();
-
-            mainForm.closeBlur();
+                mainForm.closeBlur();
+                ucBaiXeLoad();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn 01 hoá đơn!","Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
 
         private void btnBTbaiXe_Click(object sender, EventArgs e)
@@ -393,6 +401,11 @@ namespace QlyBaiGuiXe.GUI
                 cbbLoaiVe.Text = b.ToString();
                 cbbLoaiXe.SelectedItem = selectedRow.Cells[1].Value.ToString();
                 txbMaVe.Text = selectedRow.Cells[0].Value.ToString();
+
+                hoadon = (from hd in db.HoaDon
+                              where hd.MaVe == txbMaVe.Text
+                              && hd.TgVao== (DateTime)selectedRow.Cells[3].Value
+                              select hd).FirstOrDefault();
                 daChon = true;
             }
         }
