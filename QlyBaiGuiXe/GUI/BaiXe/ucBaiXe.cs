@@ -395,8 +395,9 @@ namespace QlyBaiGuiXe.GUI
             {
                 DataGridViewRow selectedRow = dgvBaiXe.Rows[row];
                 var b = (from mlv in db.VeLuot
+                         join lv in db.LoaiVe on mlv.MaLoaiVe equals lv.MaLoaiVe
                          where mlv.BienSo == selectedRow.Cells[2].Value.ToString()
-                         select mlv.MaLoaiVe).FirstOrDefault();
+                         select lv.TenLoai).FirstOrDefault();
                 txbBienSo.Text = selectedRow.Cells[2].Value.ToString();
                 cbbLoaiVe.Text = b.ToString();
                 cbbLoaiXe.SelectedItem = selectedRow.Cells[1].Value.ToString();
@@ -417,12 +418,14 @@ namespace QlyBaiGuiXe.GUI
 
                 txbMaVe.Text = sinhMaVe();
                 txbMaVe.ReadOnly = true;
+                txbMaVe.BackColor = Color.Lavender;
 
             }
             else if (cbbLoaiVe.SelectedIndex == 1)
             {
                 txbMaVe.ReadOnly = false;
                 txbMaVe.Text = null;
+                txbMaVe.BackColor = SystemColors.Window;
             }
         }
         private void findBienSo()
