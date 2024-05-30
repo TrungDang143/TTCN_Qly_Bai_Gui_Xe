@@ -199,6 +199,7 @@
             this.btnLuu.TabIndex = 20;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnHuy
             // 
@@ -213,6 +214,7 @@
             // 
             // dtpkTGN
             // 
+            this.dtpkTGN.Enabled = false;
             this.dtpkTGN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpkTGN.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpkTGN.Location = new System.Drawing.Point(142, 351);
@@ -222,6 +224,7 @@
             // 
             // dtpkTGX
             // 
+            this.dtpkTGX.Enabled = false;
             this.dtpkTGX.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpkTGX.Format = System.Windows.Forms.DateTimePickerFormat.Time;
             this.dtpkTGX.Location = new System.Drawing.Point(142, 397);
@@ -237,6 +240,7 @@
             this.cbbLoaiXe.Name = "cbbLoaiXe";
             this.cbbLoaiXe.Size = new System.Drawing.Size(230, 30);
             this.cbbLoaiXe.TabIndex = 22;
+            this.cbbLoaiXe.SelectedIndexChanged += new System.EventHandler(this.cbbLoaiXe_SelectedIndexChanged);
             // 
             // fBTTTve
             // 
