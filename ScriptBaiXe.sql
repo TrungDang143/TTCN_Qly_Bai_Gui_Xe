@@ -187,8 +187,6 @@ go
 Set quoted_identifier off
 go
 
-
-
 insert into BaiXe values("bx01", 100, N'Bãi xe máy')
 insert into BaiXe values("bx02", 100, N'Bãi xe ô tô')
 insert into BaiXe values("bx03", 100, N'Bãi xe khách')
@@ -229,12 +227,15 @@ insert into NhanVien values("admin", "dTrung", "0123456978", "2024/12/12", 1, "a
 select * from LoaiXe
 select * from LoaiVe
 
-select * from HoaDon
+select * from NhanVien
 select * from BaiXe
 delete from HoaDon
 
 select * from VeLuot
+select * from HoaDon
+
 delete from VeLuot
+exec inVe
 --sinh vé lượt theo kích thước bãi xe
 create procedure inVe as
 begin
@@ -249,7 +250,8 @@ begin
 	end
 end
 --sinh vé lượt nếu số lượng slot tăng
-
+drop proc inVe
+exec showNV
 
 create procedure showNV as
 begin
