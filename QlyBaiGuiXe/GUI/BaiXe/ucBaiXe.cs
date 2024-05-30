@@ -48,18 +48,6 @@ namespace QlyBaiGuiXe.GUI
                 cbbLoaiXe.Items.Add(loaix);
             }
         }
-        //private void LoadMaVe()
-        //{
-        //    if (cbbLoaiVe.SelectedIndex == 0)
-        //    {
-        //        string ve = sinhMaVe();
-        //        txbMaVe.Text = ve;
-        //    }
-        //    else
-        //    {
-        //        txbMaVe.Text = null;
-        //    }
-        //}
         private void ucBaiXeLoad()
         {
             txbMaVe.Text = sinhMaVe();
@@ -153,14 +141,14 @@ namespace QlyBaiGuiXe.GUI
                 throw;
             }
         }
-        private void query_ThemXe(string ve)
+        private void query_ThemXe()
         {
             try
             {
                 HoaDon newHD = new HoaDon();
                 newHD.TgVao = DateTime.Now;
                 newHD.TgRa = null;
-                newHD.MaVe = ve;
+                newHD.MaVe = txbMaVe.Text;
                 newHD.MaLoaiVe = getMaLoaiVe();
                 newHD.MaNv = NV.MaNv;
                 newHD.MaLoaiXe = getMaLoaiXe();
@@ -218,6 +206,29 @@ namespace QlyBaiGuiXe.GUI
             }
             return true;
         }
+        private bool checkRear()
+        {
+            try
+            {
+                var queryUpdateVeLuot = (from bienSo in db.VeLuot
+                                         join hd in db.HoaDon on bienSo.MaVe equals hd.MaVe
+                                         where hd.TgVao != null
+                                         select bienSo.BienSo).ToList();
+                foreach (var a in queryUpdateVeLuot)
+                {
+                    if (a.ToString() == txbBienSo.Text)
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Lỗi không lấy được danh sách các biển số!", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                throw;
+            }
+        }
         private void update_ThemBaiXe()
         {
             if (Check_NhapXe())
@@ -238,18 +249,20 @@ namespace QlyBaiGuiXe.GUI
                 MessageBox.Show("Sỗ lượng chỗ đã full! ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-        private void update_NhapVeLuot(string ve)
+        private void update_NhapVeLuot()
         {
             try
             {
                 var queryUpdateVeLuot = from bienSo in db.VeLuot
                                         join hd in db.HoaDon on bienSo.MaVe equals hd.MaVe
-                                        where bienSo.MaVe == ve && hd.TgRa == null
+                                        where bienSo.MaVe == txbMaVe.Text && hd.TgRa == null
                                         select bienSo;
                 if (queryUpdateVeLuot.Count() > 0)
                 {
                     VeLuot veLuot = queryUpdateVeLuot.SingleOrDefault();
+                   // HoaDon hd = queryUpdateHoaDon.SingleOrDefault();
                     veLuot.BienSo = txbBienSo.Text;
+                    db.SaveChanges();
                 }
             }
             catch (Exception)
@@ -263,32 +276,45 @@ namespace QlyBaiGuiXe.GUI
             txbBienSo.Text = null;
             cbbLoaiVe.SelectedIndex = 0;
             cbbLoaiXe.SelectedIndex = 0;
-            txbMaVe.Text = null;
         }
         private void btnNhapXe_Click(object sender, EventArgs e)
         {
             //xu ly sql
             if (isCheck() == true)
             {
-                query_ThemXe(sinhMaVe());
-                update_NhapVeLuot(sinhMaVe());
-                update_ThemBaiXe();
-                ucBaiXeLoad();
-                reset();
-                MessageBox.Show("Nhập xe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                if (checkRear())
+                {
+                    query_ThemXe();
+                    update_NhapVeLuot();
+
+                    update_ThemBaiXe();
+                    ucBaiXeLoad();
+                    reset();
+                    MessageBox.Show("Nhập xe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Biển số xe này đã tồn tại!", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    reset();
+                }
             }
         }
 
         private void update_XuatVeLuot()
         {
-            var queryUpdateVeLuot = from sua in db.VeLuot
-                                    where sua.MaVe == txbMaVe.Text
-                                    select sua;
+            var queryUpdateVeLuot = from bienSo in db.VeLuot
+                                    join hd in db.HoaDon on bienSo.MaVe equals hd.MaVe
+                                    where bienSo.MaVe == txbMaVe.Text && hd.TgRa != null
+                                    select bienSo;
             if (queryUpdateVeLuot.Count() > 0)
             {
                 VeLuot veLuot = queryUpdateVeLuot.SingleOrDefault();
                 veLuot.BienSo = "";
                 db.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy xe!", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         private void btnXuatXe_Click(object sender, EventArgs e)
@@ -298,13 +324,13 @@ namespace QlyBaiGuiXe.GUI
             {
                 if(Check_XuatXe() == true)
                 {
-                    update_XuatVeLuot();
                     var queryHoaDon = (from hd in db.HoaDon
                                        where hd.MaVe == txbMaVe.Text
                                        select hd).FirstOrDefault();
                     HoaDon updateHoaDon = queryHoaDon;
                     updateHoaDon.TgRa = DateTime.Now;
                     db.SaveChanges();
+                    update_XuatVeLuot();
                     update_XuatBaiXe();
                     ucBaiXeLoad();
                     MessageBox.Show("Xuất xe thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
