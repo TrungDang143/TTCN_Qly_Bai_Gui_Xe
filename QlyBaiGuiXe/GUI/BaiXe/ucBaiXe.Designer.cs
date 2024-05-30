@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbbLoaiXe = new System.Windows.Forms.ComboBox();
             this.cbbLoaiVe = new System.Windows.Forms.ComboBox();
@@ -185,6 +186,14 @@
             // 
             // dgvBaiXe
             // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBaiXe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBaiXe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBaiXe.Location = new System.Drawing.Point(29, 217);
             this.dgvBaiXe.Name = "dgvBaiXe";
@@ -217,6 +226,7 @@
             this.btnTimMaVe.TabIndex = 2;
             this.btnTimMaVe.Text = "Tìm theo mã vé";
             this.btnTimMaVe.UseVisualStyleBackColor = true;
+            this.btnTimMaVe.Click += new System.EventHandler(this.btnTimMaVe_Click);
             // 
             // btnTimBienSo
             // 
@@ -227,6 +237,7 @@
             this.btnTimBienSo.TabIndex = 3;
             this.btnTimBienSo.Text = "Tìm theo biển số";
             this.btnTimBienSo.UseVisualStyleBackColor = true;
+            this.btnTimBienSo.Click += new System.EventHandler(this.btnTimBienSo_Click);
             // 
             // pictureBox1
             // 

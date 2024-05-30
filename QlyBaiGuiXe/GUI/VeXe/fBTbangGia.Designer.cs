@@ -84,6 +84,7 @@
             this.btnLuu.TabIndex = 38;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // cbbLoaiXe
             // 
@@ -93,6 +94,7 @@
             this.cbbLoaiXe.Name = "cbbLoaiXe";
             this.cbbLoaiXe.Size = new System.Drawing.Size(230, 30);
             this.cbbLoaiXe.TabIndex = 36;
+            this.cbbLoaiXe.SelectedIndexChanged += new System.EventHandler(this.cbbLoaiVe_SelectedIndexChanged);
             // 
             // txbGia
             // 
@@ -101,6 +103,7 @@
             this.txbGia.Name = "txbGia";
             this.txbGia.Size = new System.Drawing.Size(230, 28);
             this.txbGia.TabIndex = 34;
+            this.txbGia.TextChanged += new System.EventHandler(this.txbGia_TextChanged);
             // 
             // label3
             // 
@@ -151,6 +154,7 @@
             this.cbbLoaiVe.Name = "cbbLoaiVe";
             this.cbbLoaiVe.Size = new System.Drawing.Size(230, 30);
             this.cbbLoaiVe.TabIndex = 36;
+            this.cbbLoaiVe.SelectedIndexChanged += new System.EventHandler(this.cbbLoaiVe_SelectedIndexChanged);
             // 
             // fBTbangGia
             // 
@@ -171,6 +175,7 @@
             this.Name = "fBTbangGia";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "fBTbangGia";
+            this.Load += new System.EventHandler(this.fBTbangGia_Load);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);

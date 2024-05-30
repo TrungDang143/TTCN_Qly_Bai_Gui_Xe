@@ -19,12 +19,13 @@ namespace QlyBaiGuiXe.GUI
     public partial class ucBaiXe : UserControl
     {
         BaiXeDBContext db = new BaiXeDBContext();
-        NhanVien NV;
+        NhanVien currentNV;
+        HoaDon hoadon;
         public ucBaiXe(NhanVien nv)
         {
             InitializeComponent();
             ucBaiXeLoad();
-            NV = nv;
+            currentNV = nv;
             LoadComboBox_LoaiVe();
             LoadComboBox_LoaiXe();
             cbbLoaiVe.SelectedIndex = 0;
@@ -48,6 +49,38 @@ namespace QlyBaiGuiXe.GUI
                 cbbLoaiXe.Items.Add(loaix);
             }
         }
+        //private void LoadMaVe()
+        //{
+        //    if (cbbLoaiVe.SelectedIndex == 0)
+        //    {
+        //        string ve = sinhMaVe();
+        //        txbMaVe.Text = ve;
+        //    }
+        //    else
+        //    {
+        //        txbMaVe.Text = null;
+        //    }
+        //}
+        private static string getTenNV(string manv)
+        {
+            try
+            {
+                BaiXeDBContext db = new BaiXeDBContext();
+                var ten = (from nv in db.NhanVien
+                           where nv.MaNv == manv
+                           select nv.HoTen).FirstOrDefault();
+                if(ten == null)
+                {
+                    return "Không có dữ liệu";
+                }
+                return ten;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi lấy mã loại vé!\n" + ex.Message, "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            return null;
+        }
         private void ucBaiXeLoad()
         {
             txbMaVe.Text = sinhMaVe();
@@ -64,6 +97,7 @@ namespace QlyBaiGuiXe.GUI
                                  VL.BienSo,
                                  hd.TgVao,
                                  hd.TgRa,
+                                 nv = getTenNV(hd.MaNv),
                              };
             dgvBaiXe.DataSource = queryBaiXe.ToList();
             dgvBaiXe.Columns["MaVe"].HeaderText = "Mã vé".ToUpper();
@@ -71,6 +105,7 @@ namespace QlyBaiGuiXe.GUI
             dgvBaiXe.Columns["BienSo"].HeaderText = "Biển số".ToUpper();
             dgvBaiXe.Columns["TgVao"].HeaderText = "Thời gian nhập".ToUpper();
             dgvBaiXe.Columns["TgRa"].HeaderText = "Thời gian xuất".ToUpper();
+            dgvBaiXe.Columns["nv"].HeaderText = "Nhân viên".ToUpper();
 
             dgvBaiXe.ColumnHeadersDefaultCellStyle.Font = new Font(dgvBaiXe.Font, FontStyle.Bold);
 
@@ -79,17 +114,24 @@ namespace QlyBaiGuiXe.GUI
 
         private void btnBTTTve_Click(object sender, EventArgs e)
         {
-            //neu chon trong dgv
+            
+            if(hoadon != null)
+            {
+                Panel mainPanel = this.Parent as Panel;
+                mainUI mainForm = mainPanel.Parent as mainUI;
 
-            //neu ko chon
-            Panel mainPanel = this.Parent as Panel;
-            mainUI mainForm = mainPanel.Parent as mainUI;
+                mainForm.showBlur();
+                fBTTTve newForm = new fBTTTve(hoadon);
+                newForm.ShowDialog();
 
-            mainForm.showBlur();
-            fBTTTve newForm = new fBTTTve();
-            newForm.ShowDialog();
-
-            mainForm.closeBlur();
+                mainForm.closeBlur();
+                ucBaiXeLoad();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn 01 hoá đơn!","Lưu ý", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
 
         private void btnBTbaiXe_Click(object sender, EventArgs e)
@@ -120,11 +162,11 @@ namespace QlyBaiGuiXe.GUI
                          select mlv.MaLoaiVe).SingleOrDefault();
                 return a.ToString();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Lỗi lấy mã loại vé!", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                throw;
+                MessageBox.Show("Lỗi lấy mã loại vé!\n"+ex.Message, "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            return null;
         }
         public string getMaLoaiXe()
         {
@@ -135,11 +177,11 @@ namespace QlyBaiGuiXe.GUI
                          select mlx.MaLoaiXe).SingleOrDefault();
                 return a.ToString();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Lỗi lấy mã loại xe!", "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                throw;
+                MessageBox.Show("Lỗi lấy mã loại xe!\n" + ex.Message, "Lỗi CSDL", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            return null;
         }
         private void query_ThemXe()
         {
@@ -150,7 +192,7 @@ namespace QlyBaiGuiXe.GUI
                 newHD.TgRa = null;
                 newHD.MaVe = txbMaVe.Text;
                 newHD.MaLoaiVe = getMaLoaiVe();
-                newHD.MaNv = NV.MaNv;
+                newHD.MaNv = currentNV.MaNv;
                 newHD.MaLoaiXe = getMaLoaiXe();
                 db.HoaDon.Add(newHD);
                 db.SaveChanges();
@@ -206,13 +248,14 @@ namespace QlyBaiGuiXe.GUI
             }
             return true;
         }
+        //ktra xem co hoa don chua hoan thanh ko
         private bool checkRear()
         {
             try
             {
                 var queryUpdateVeLuot = (from bienSo in db.VeLuot
                                          join hd in db.HoaDon on bienSo.MaVe equals hd.MaVe
-                                         where hd.TgVao != null
+                                         where hd.TgRa == null
                                          select bienSo.BienSo).ToList();
                 foreach (var a in queryUpdateVeLuot)
                 {
@@ -390,12 +433,18 @@ namespace QlyBaiGuiXe.GUI
             {
                 DataGridViewRow selectedRow = dgvBaiXe.Rows[row];
                 var b = (from mlv in db.VeLuot
+                         join lv in db.LoaiVe on mlv.MaLoaiVe equals lv.MaLoaiVe
                          where mlv.BienSo == selectedRow.Cells[2].Value.ToString()
-                         select mlv.MaLoaiVe).FirstOrDefault();
+                         select lv.TenLoai).FirstOrDefault();
                 txbBienSo.Text = selectedRow.Cells[2].Value.ToString();
                 cbbLoaiVe.Text = b.ToString();
                 cbbLoaiXe.SelectedItem = selectedRow.Cells[1].Value.ToString();
                 txbMaVe.Text = selectedRow.Cells[0].Value.ToString();
+
+                hoadon = (from hd in db.HoaDon
+                              where hd.MaVe == txbMaVe.Text
+                              && hd.TgVao== (DateTime)selectedRow.Cells[3].Value
+                              select hd).FirstOrDefault();
                 daChon = true;
             }
         }
@@ -407,13 +456,76 @@ namespace QlyBaiGuiXe.GUI
 
                 txbMaVe.Text = sinhMaVe();
                 txbMaVe.ReadOnly = true;
+                txbMaVe.BackColor = Color.Lavender;
 
             }
             else if (cbbLoaiVe.SelectedIndex == 1)
             {
                 txbMaVe.ReadOnly = false;
                 txbMaVe.Text = null;
+                txbMaVe.BackColor = SystemColors.Window;
             }
+        }
+        private void findBienSo()
+        {
+            try
+            {
+                BaiXeDBContext db = new BaiXeDBContext();
+                var queryBaiXe = from hd in db.HoaDon
+                                 join LV in db.LoaiVe on hd.MaLoaiVe equals LV.MaLoaiVe
+                                 join maLX in db.LoaiXe on hd.MaLoaiXe equals maLX.MaLoaiXe
+                                 join VL in db.VeLuot on hd.MaVe equals VL.MaVe
+                                 where VL.BienSo.Contains(txbTimKiem.Text)
+                                 select new
+                                 {
+                                     hd.MaVe,
+                                     maLX.TenXe,
+                                     VL.BienSo,
+                                     hd.TgVao,
+                                     hd.TgRa,
+                                     nv = getTenNV(hd.MaNv),
+                                 };
+                dgvBaiXe.DataSource = queryBaiXe.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi lấy thông tin vé xe!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void findMaVe()
+        {
+            try
+            {
+                BaiXeDBContext db = new BaiXeDBContext();
+                var queryBaiXe = from hd in db.HoaDon
+                                 join LV in db.LoaiVe on hd.MaLoaiVe equals LV.MaLoaiVe
+                                 join maLX in db.LoaiXe on hd.MaLoaiXe equals maLX.MaLoaiXe
+                                 join VL in db.VeLuot on hd.MaVe equals VL.MaVe
+                                 where hd.MaVe.Contains(txbTimKiem.Text)
+                                 select new
+                                 {
+                                     hd.MaVe,
+                                     maLX.TenXe,
+                                     VL.BienSo,
+                                     hd.TgVao,
+                                     hd.TgRa,
+                                     nv = getTenNV(hd.MaNv),
+                                 };
+                dgvBaiXe.DataSource = queryBaiXe.ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi lấy thông tin vé xe!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void btnTimBienSo_Click(object sender, EventArgs e)
+        {
+            findBienSo();
+        }
+
+        private void btnTimMaVe_Click(object sender, EventArgs e)
+        {
+            findMaVe();
         }
     }
 }

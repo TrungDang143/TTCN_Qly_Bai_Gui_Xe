@@ -82,6 +82,7 @@
             this.cbbBaiXe.Name = "cbbBaiXe";
             this.cbbBaiXe.Size = new System.Drawing.Size(230, 30);
             this.cbbBaiXe.TabIndex = 26;
+            this.cbbBaiXe.SelectedIndexChanged += new System.EventHandler(this.cbbBaiXe_SelectedIndexChanged);
             // 
             // txbDaDung
             // 
@@ -152,6 +153,7 @@
             this.btnLuu.TabIndex = 28;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // fBTbaiXe
             // 
@@ -172,6 +174,7 @@
             this.Name = "fBTbaiXe";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "fBTbaiXe";
+            this.Load += new System.EventHandler(this.fBTbaiXe_Load);
             this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.ResumeLayout(false);
