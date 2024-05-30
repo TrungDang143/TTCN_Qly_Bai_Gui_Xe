@@ -234,7 +234,10 @@ select * from BaiXe
 delete from HoaDon
 
 select * from VeLuot
+select * from HoaDon
+
 delete from VeLuot
+exec inVe
 --sinh vé lượt theo kích thước bãi xe
 create procedure inVe as
 begin
