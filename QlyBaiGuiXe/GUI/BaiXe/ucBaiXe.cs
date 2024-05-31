@@ -95,6 +95,7 @@ namespace QlyBaiGuiXe.GUI
             var queryBaiXe = from hd in db.HoaDon
                              join maLX in db.LoaiXe on hd.MaLoaiXe equals maLX.MaLoaiXe
                              join maLV in db.LoaiVe on hd.MaLoaiVe equals maLV.MaLoaiVe
+                             where (hd.TgVao >= DateTime.Now.Date) || (hd.TgRa == null)
                              orderby hd.TgRa ascending
                              //orderby hd.TgVao descending
                              select new
