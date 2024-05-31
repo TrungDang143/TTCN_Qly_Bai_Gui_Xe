@@ -16,6 +16,8 @@ namespace QlyBaiGuiXe.Entities
         public string MaLoaiVe { get; set; }
         public string MaNv { get; set; }
         public string MaLoaiXe { get; set; }
+        public string BienSo { get; set; }
+        public int Gia { get; set; }
 
         public virtual LoaiVe MaLoaiVeNavigation { get; set; }
         public virtual LoaiXe MaLoaiXeNavigation { get; set; }

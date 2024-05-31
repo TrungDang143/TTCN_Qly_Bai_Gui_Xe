@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbbLoaiXe = new System.Windows.Forms.ComboBox();
             this.cbbLoaiVe = new System.Windows.Forms.ComboBox();
@@ -50,6 +50,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnBTbaiXe = new System.Windows.Forms.Button();
             this.btnBTTTve = new System.Windows.Forms.Button();
+            this.lbNgay = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBaiXe)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -71,7 +72,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(29, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1028, 155);
+            this.groupBox1.Size = new System.Drawing.Size(1028, 141);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin ";
@@ -84,6 +85,7 @@
             this.cbbLoaiXe.Name = "cbbLoaiXe";
             this.cbbLoaiXe.Size = new System.Drawing.Size(197, 30);
             this.cbbLoaiXe.TabIndex = 2;
+            this.cbbLoaiXe.SelectedIndexChanged += new System.EventHandler(this.cbbLoaiXe_SelectedIndexChanged);
             // 
             // cbbLoaiVe
             // 
@@ -121,6 +123,7 @@
             this.txbMaVe.Name = "txbMaVe";
             this.txbMaVe.Size = new System.Drawing.Size(230, 28);
             this.txbMaVe.TabIndex = 1;
+            this.txbMaVe.TextChanged += new System.EventHandler(this.txbMaVe_TextChanged);
             // 
             // label2
             // 
@@ -136,7 +139,7 @@
             // 
             this.lbThongTin.AutoSize = true;
             this.lbThongTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbThongTin.Location = new System.Drawing.Point(819, 44);
+            this.lbThongTin.Location = new System.Drawing.Point(804, 44);
             this.lbThongTin.Name = "lbThongTin";
             this.lbThongTin.Size = new System.Drawing.Size(146, 22);
             this.lbThongTin.TabIndex = 0;
@@ -186,14 +189,14 @@
             // 
             // dgvBaiXe
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvBaiXe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvBaiXe.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBaiXe.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBaiXe.Location = new System.Drawing.Point(29, 217);
             this.dgvBaiXe.Name = "dgvBaiXe";
@@ -256,6 +259,7 @@
             this.txbTimKiem.Name = "txbTimKiem";
             this.txbTimKiem.Size = new System.Drawing.Size(163, 28);
             this.txbTimKiem.TabIndex = 0;
+            this.txbTimKiem.TextChanged += new System.EventHandler(this.txbTimKiem_TextChanged);
             // 
             // groupBox3
             // 
@@ -290,10 +294,22 @@
             this.btnBTTTve.UseVisualStyleBackColor = true;
             this.btnBTTTve.Click += new System.EventHandler(this.btnBTTTve_Click);
             // 
+            // lbNgay
+            // 
+            this.lbNgay.AutoSize = true;
+            this.lbNgay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNgay.Location = new System.Drawing.Point(26, 187);
+            this.lbNgay.Name = "lbNgay";
+            this.lbNgay.Size = new System.Drawing.Size(88, 18);
+            this.lbNgay.TabIndex = 5;
+            this.lbNgay.Text = "Ngày: --/--/--";
+            this.lbNgay.TextChanged += new System.EventHandler(this.lbNgay_TextChanged);
+            // 
             // ucBaiXe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbNgay);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.dgvBaiXe);
@@ -310,6 +326,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -336,5 +353,6 @@
         private System.Windows.Forms.Button btnBTbaiXe;
         private System.Windows.Forms.Button btnBTTTve;
         private System.Windows.Forms.DataGridView dgvBaiXe;
+        private System.Windows.Forms.Label lbNgay;
     }
 }

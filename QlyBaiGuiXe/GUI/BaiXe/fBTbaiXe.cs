@@ -54,7 +54,7 @@ namespace QlyBaiGuiXe.GUI.BaiXe
             }
             return null;
         }
-        private string getMaLoaiXeByMaBaiXe(string mabx)
+        private string getMaLoaiXeByTenBaiXe(string tenbx)
         {
             try
             {
@@ -62,8 +62,8 @@ namespace QlyBaiGuiXe.GUI.BaiXe
 
                 var loaixe = (from lx in db.LoaiXe
                                 join bx in db.BaiXe on lx.MaBaiXe equals bx.MaBaiXe
-                                where bx.MaBaiXe == mabx
-                                select lx.MaLoaiXe).FirstOrDefault();
+                                where bx.TenBai == tenbx
+                              select lx.MaLoaiXe).FirstOrDefault();
                 return loaixe;
             }
             catch (Exception ex)
@@ -82,7 +82,8 @@ namespace QlyBaiGuiXe.GUI.BaiXe
                           select bx.SoLuong).FirstOrDefault();
                 var dd = (from hd in db.HoaDon
                           join lx in db.LoaiXe on hd.MaLoaiXe equals lx.MaLoaiXe
-                          where hd.MaLoaiXe == getMaLoaiXeByMaBaiXe(cbbBaiXe.Text)
+                          where hd.MaLoaiXe == getMaLoaiXeByTenBaiXe(cbbBaiXe.SelectedItem.ToString())
+                          && hd.TgRa == null
                           select hd).Count();
 
                 txbDaDung.Text = dd.ToString();
