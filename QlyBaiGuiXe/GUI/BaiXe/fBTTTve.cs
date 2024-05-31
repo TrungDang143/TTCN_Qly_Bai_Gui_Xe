@@ -43,16 +43,16 @@ namespace QlyBaiGuiXe.GUI.BaiXe
                 var queryBaiXe = (from hd in db.HoaDon
                                   join LV in db.LoaiVe on hd.MaLoaiVe equals LV.MaLoaiVe
                                   join maLX in db.LoaiXe on hd.MaLoaiXe equals maLX.MaLoaiXe
-                                  join VL in db.VeLuot on hd.MaVe equals VL.MaVe
                                   where hd.MaHd == HD.MaHd
                                   select new
                                   {
                                       hd.MaVe,
                                       LV.TenLoai,
                                       maLX.TenXe,
-                                      VL.BienSo,
+                                      hd.BienSo,
                                       hd.TgVao,
                                       hd.TgRa,
+                                      hd.Gia
                                   }).FirstOrDefault();
 
                 txbMaVe.Text = queryBaiXe.MaVe;
@@ -60,6 +60,7 @@ namespace QlyBaiGuiXe.GUI.BaiXe
                 cbbLoaiXe.SelectedItem = queryBaiXe.TenXe;
                 txbBienSo.Text = queryBaiXe.BienSo;
                 dtpkTGN.Value = queryBaiXe.TgVao;
+                txbMucPhi.Text = HD.Gia.ToString("N0");
                 if (queryBaiXe.TgRa == null)
                 {
                     dtpkTGN.Enabled = true;
