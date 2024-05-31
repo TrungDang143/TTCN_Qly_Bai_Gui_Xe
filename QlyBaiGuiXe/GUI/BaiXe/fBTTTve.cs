@@ -68,10 +68,10 @@ namespace QlyBaiGuiXe.GUI.BaiXe
                 }
                 else
                 {
+                    cbbLoaiXe.Enabled = false;
                     dtpkTGX.Value = queryBaiXe.TgRa.Value;
                 }
 
-                
             }
             catch (Exception ex)
             {
