@@ -108,6 +108,7 @@
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Admin";
+            this.groupBox3.Visible = false;
             // 
             // btnBTbangGia
             // 

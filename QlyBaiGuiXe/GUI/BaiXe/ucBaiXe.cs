@@ -27,7 +27,8 @@ namespace QlyBaiGuiXe.GUI
         {
             InitializeComponent();
             currentNV = nv;
-            lbNgay.Text = "Ngày: " + DateTime.Now.Date.ToString("dd/MM/yyyy");
+            if (nv.MaCv == "ql")
+                groupBox3.Visible = true;
             ucBaiXeLoad();
         }
         private void LoadComboBox_LoaiVe()
@@ -134,6 +135,9 @@ namespace QlyBaiGuiXe.GUI
 
             LoadComboBox_LoaiVe();
             LoadComboBox_LoaiXe();
+
+            lbNgay.Text = "Ngày: " + DateTime.Now.Date.ToString("dd/MM/yyyy");
+            updateHD_QuaNgay();
         }
 
         private void btnBTTTve_Click(object sender, EventArgs e)
@@ -230,9 +234,9 @@ namespace QlyBaiGuiXe.GUI
             {
                 BaiXeDBContext db = new BaiXeDBContext();
 
-                if(maloaive == "VL" && DateTime.Compare(DateTime.Now.Date, ngayvao.Date)<0)
+                if(maloaive == "VL" && DateTime.Compare(DateTime.Now.Date, ngayvao.Date)>0)
                 {
-                    return (ngayvao -  DateTime.Now).Days * getPhiQuaDem(maloaixe);
+                    return (DateTime.Now.Date - ngayvao.Date ).Days * getPhiQuaDem(maloaixe);
                 }
                 else
                 {
@@ -825,10 +829,6 @@ namespace QlyBaiGuiXe.GUI
             {
                 MessageBox.Show("Lỗi update giá vé qua đêm!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private void lbNgay_TextChanged(object sender, EventArgs e)
-        {
-            updateHD_QuaNgay();
         }
     }
 }

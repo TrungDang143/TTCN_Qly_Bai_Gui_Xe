@@ -271,6 +271,7 @@
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Admin";
+            this.groupBox3.Visible = false;
             // 
             // btnBTbaiXe
             // 
@@ -303,7 +304,6 @@
             this.lbNgay.Size = new System.Drawing.Size(88, 18);
             this.lbNgay.TabIndex = 5;
             this.lbNgay.Text = "Ngày: --/--/--";
-            this.lbNgay.TextChanged += new System.EventHandler(this.lbNgay_TextChanged);
             // 
             // ucBaiXe
             // 

@@ -310,3 +310,7 @@ drop proc TaoHoaDon
 insert into HoaDon values ("hd1", "28L1 23127", "2024/12/12", "2024/12/12", "VE5", "VL", "nv1")
 insert into HoaDon values ("hd4", "28L1 23127", "2024/12/12", "2024/12/12", "VE4", "VL", "nv3")
 */
+
+/*Feture update
+- thêm trigger nhập xuất xe vào bãi
+*/

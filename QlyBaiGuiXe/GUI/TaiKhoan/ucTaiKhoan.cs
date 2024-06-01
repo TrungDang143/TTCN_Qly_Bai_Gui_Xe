@@ -26,7 +26,8 @@ namespace QlyBaiGuiXe.GUI
             InitializeComponent();
 
             this.currentNV = currentNV;
-            
+            if (currentNV.MaCv == "ql")
+                groupBox2.Visible = true;
         }
 
         private void loadData()

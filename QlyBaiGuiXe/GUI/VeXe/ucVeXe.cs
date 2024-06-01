@@ -17,9 +17,11 @@ namespace QlyBaiGuiXe.GUI
 {
     public partial class ucVeXe : UserControl
     {
-        public ucVeXe()
+        public ucVeXe(NhanVien nv)
         {
             InitializeComponent();
+            if (nv.MaCv == "ql")
+                groupBox3.Visible = true;
         }
 
         private void label8_Click(object sender, EventArgs e)
