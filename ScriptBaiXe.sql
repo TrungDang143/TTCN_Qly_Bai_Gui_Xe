@@ -209,107 +209,24 @@ insert into BangGia values("xe02", "VT", 350000)
 insert into BangGia values("xe03", "VL", 30000)
 insert into BangGia values("xe03", "VT", 500000)
 
-insert into KhachHang values("dang duc trung", "0123456789", 1, "hoa binh")
-insert into Xe values("28L1 23127", "xe01", 1)
-insert into Xe values("28L1 3427", "xe01", 1)
-
-insert into VeLuot values("VE1","VL", "28L1 11111")
-insert into VeLuot values("VE2", "VL", "28L1 23127")
-insert into VeThang values("VT1", "28L1 23127", "VT", "2024/12/12", 1)
-insert into VeThang values("VT2", "28L1 3427", "VT", "2024/12/12", 1)
-
 insert into ChucVu values("nv", N'Nhân viên')
 insert into ChucVu values("ql", N'Quản lý')
 
-
 insert into TaiKhoan values("admin", "1111")
-insert into NhanVien values("admin", "dTrung", "0123456978", "2024/12/12", 1, "abc@gmail.com", 1, "ql")
-select * from LoaiXe
-select * from LoaiVe
+insert into NhanVien values("admin", "dTrung", "0123456978", "2024/12/12", 1, "bancuaban102@gmail.com", 1, "ql")
+go
 
-select * from NhanVien
-select * from BaiXe
-delete from HoaDon
-
-select * from VeLuot
-select * from HoaDon
-
-delete from VeLuot
-exec inVe
 --sinh vé lượt theo kích thước bãi xe
-create procedure inVe as
+declare @n int
+set @n = (select sum(soLuong) from BaiXe)
+print @n
+while @n > 0
 begin
-	declare @n int
-	set @n = (select sum(soLuong) from BaiXe)
-	print @n
-	while @n > 0
-	begin
-		insert into VeLuot values(concat('VE', @n), 'VL','')
-		set @n = @n-1
-		--print concat('VE', @n)
-	end
-end
---sinh vé lượt nếu số lượng slot tăng
-drop proc inVe
-exec showNV
-
-create procedure showNV as
-begin
-	SELECT 
-    NhanVien.maNV, 
-    NhanVien.hoTen, 
-    ChucVu.tenCV, 
-    NhanVien.SDT, 
-    NhanVien.ngaySinh, 
-		CASE 
-			WHEN NhanVien.gioiTinh = 1 THEN 'Nam' 
-			WHEN NhanVien.gioiTinh = 0 THEN 'Nữ' 
-		END AS GioiTinh
-	FROM 
-		NhanVien 
-	INNER JOIN 
-		ChucVu 
-	ON 
-		NhanVien.maCV = ChucVu.maCV;
+	insert into VeLuot values(concat('VE', @n), 'VL','')
+	set @n = @n-1
 end
 go
 
-
-/*
-create proc TaoHoaDon @mave varchar(10), @loaive varchar(10), @loaixe varchar(10), @bienso varchar(11)
-as
-	declare @tong int
-	if @loaive in ('VL')
-	begin
-		if exists (select 1 from VeLuot where @mave = maVe)
-		begin
-			set @tong = (select gia from BangGia where maLoaiVe = 'VL' and @loaixe = maLoaiXe)
-			
-			insert into HoaDon values ("hd5", @bienso, "2024/12/12", "2024/12/12", @mave, @loaive, "nv1")
-			print '-->' + STR(@tong)
-		end
-		else print 'Ma ve ko hop le'
-	end
-	else
-	if @loaive in ('VT')
-	begin
-		if exists (select 1 from VeThang where @mave = maVe)
-		begin
-			--so sanh thời hạn
-			
-			insert into HoaDon values ("hd6", @bienso, "2024/12/12", "2024/12/12", @mave, @loaive, "nv1")
-			print '-->' + STR(@tong)
-		end
-	end
-go
-
-exec TaoHoaDon 'VE2', 'VL', 'xe02', '28L1 11111'
-
-drop proc TaoHoaDon
-
-insert into HoaDon values ("hd1", "28L1 23127", "2024/12/12", "2024/12/12", "VE5", "VL", "nv1")
-insert into HoaDon values ("hd4", "28L1 23127", "2024/12/12", "2024/12/12", "VE4", "VL", "nv3")
-*/
 
 /*Feture update
 - thêm trigger nhập xuất xe vào bãi
