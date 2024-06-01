@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lbVeThang = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvTK = new System.Windows.Forms.DataGridView();
             this.btnHN = new System.Windows.Forms.Button();
             this.btnTuan = new System.Windows.Forms.Button();
             this.btnThang = new System.Windows.Forms.Button();
@@ -38,28 +38,31 @@
             this.btnVeLuot = new System.Windows.Forms.Button();
             this.btnAll = new System.Windows.Forms.Button();
             this.dtpk = new System.Windows.Forms.DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lbDoanhThu = new System.Windows.Forms.Label();
+            this.lbVT = new System.Windows.Forms.Label();
+            this.lbVL = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTK)).BeginInit();
             this.SuspendLayout();
             // 
             // lbVeThang
             // 
             this.lbVeThang.AutoSize = true;
             this.lbVeThang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbVeThang.Location = new System.Drawing.Point(25, 54);
+            this.lbVeThang.Location = new System.Drawing.Point(25, 730);
             this.lbVeThang.Name = "lbVeThang";
             this.lbVeThang.Size = new System.Drawing.Size(256, 22);
             this.lbVeThang.TabIndex = 0;
             this.lbVeThang.Text = "Số lượng vé tháng đăng ký mới";
             // 
-            // dataGridView1
+            // dgvTK
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(29, 169);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1263, 608);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvTK.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTK.Location = new System.Drawing.Point(29, 105);
+            this.dgvTK.Name = "dgvTK";
+            this.dgvTK.RowHeadersWidth = 51;
+            this.dgvTK.RowTemplate.Height = 24;
+            this.dgvTK.Size = new System.Drawing.Size(1263, 595);
+            this.dgvTK.TabIndex = 1;
             // 
             // btnHN
             // 
@@ -69,7 +72,7 @@
             this.btnHN.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHN.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHN.ForeColor = System.Drawing.Color.Black;
-            this.btnHN.Location = new System.Drawing.Point(29, 114);
+            this.btnHN.Location = new System.Drawing.Point(29, 43);
             this.btnHN.Name = "btnHN";
             this.btnHN.Size = new System.Drawing.Size(102, 37);
             this.btnHN.TabIndex = 2;
@@ -85,7 +88,7 @@
             this.btnTuan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTuan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTuan.ForeColor = System.Drawing.Color.Black;
-            this.btnTuan.Location = new System.Drawing.Point(131, 114);
+            this.btnTuan.Location = new System.Drawing.Point(131, 43);
             this.btnTuan.Name = "btnTuan";
             this.btnTuan.Size = new System.Drawing.Size(102, 37);
             this.btnTuan.TabIndex = 2;
@@ -101,7 +104,7 @@
             this.btnThang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnThang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThang.ForeColor = System.Drawing.Color.Black;
-            this.btnThang.Location = new System.Drawing.Point(233, 114);
+            this.btnThang.Location = new System.Drawing.Point(233, 43);
             this.btnThang.Name = "btnThang";
             this.btnThang.Size = new System.Drawing.Size(102, 37);
             this.btnThang.TabIndex = 2;
@@ -117,7 +120,7 @@
             this.btnNam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNam.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNam.ForeColor = System.Drawing.Color.Black;
-            this.btnNam.Location = new System.Drawing.Point(335, 114);
+            this.btnNam.Location = new System.Drawing.Point(335, 43);
             this.btnNam.Name = "btnNam";
             this.btnNam.Size = new System.Drawing.Size(102, 37);
             this.btnNam.TabIndex = 2;
@@ -133,7 +136,7 @@
             this.btnVeThang.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVeThang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVeThang.ForeColor = System.Drawing.Color.Black;
-            this.btnVeThang.Location = new System.Drawing.Point(1190, 114);
+            this.btnVeThang.Location = new System.Drawing.Point(1190, 43);
             this.btnVeThang.Name = "btnVeThang";
             this.btnVeThang.Size = new System.Drawing.Size(102, 37);
             this.btnVeThang.TabIndex = 3;
@@ -149,7 +152,7 @@
             this.btnVeLuot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVeLuot.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVeLuot.ForeColor = System.Drawing.Color.Black;
-            this.btnVeLuot.Location = new System.Drawing.Point(1088, 114);
+            this.btnVeLuot.Location = new System.Drawing.Point(1088, 43);
             this.btnVeLuot.Name = "btnVeLuot";
             this.btnVeLuot.Size = new System.Drawing.Size(102, 37);
             this.btnVeLuot.TabIndex = 4;
@@ -165,7 +168,7 @@
             this.btnAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAll.ForeColor = System.Drawing.Color.Black;
-            this.btnAll.Location = new System.Drawing.Point(986, 114);
+            this.btnAll.Location = new System.Drawing.Point(986, 43);
             this.btnAll.Name = "btnAll";
             this.btnAll.Size = new System.Drawing.Size(102, 37);
             this.btnAll.TabIndex = 4;
@@ -177,16 +180,50 @@
             // 
             this.dtpk.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpk.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpk.Location = new System.Drawing.Point(514, 115);
+            this.dtpk.Location = new System.Drawing.Point(514, 44);
             this.dtpk.Name = "dtpk";
             this.dtpk.Size = new System.Drawing.Size(382, 28);
             this.dtpk.TabIndex = 5;
             this.dtpk.ValueChanged += new System.EventHandler(this.dtpk_ValueChanged);
             // 
+            // lbDoanhThu
+            // 
+            this.lbDoanhThu.AutoSize = true;
+            this.lbDoanhThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDoanhThu.Location = new System.Drawing.Point(25, 764);
+            this.lbDoanhThu.Name = "lbDoanhThu";
+            this.lbDoanhThu.Size = new System.Drawing.Size(139, 22);
+            this.lbDoanhThu.TabIndex = 0;
+            this.lbDoanhThu.Text = "Doanh thu trong";
+            // 
+            // lbVT
+            // 
+            this.lbVT.AutoSize = true;
+            this.lbVT.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVT.Location = new System.Drawing.Point(664, 764);
+            this.lbVT.Name = "lbVT";
+            this.lbVT.Size = new System.Drawing.Size(92, 22);
+            this.lbVT.TabIndex = 0;
+            this.lbVT.Text = "Vé tháng: ";
+            // 
+            // lbVL
+            // 
+            this.lbVL.AutoSize = true;
+            this.lbVL.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVL.Location = new System.Drawing.Point(664, 730);
+            this.lbVL.Name = "lbVL";
+            this.lbVL.Size = new System.Drawing.Size(71, 22);
+            this.lbVL.TabIndex = 0;
+            this.lbVL.Text = "Vé lượt:";
+            // 
             // ucThongKe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbVL);
+            this.Controls.Add(this.lbVeThang);
+            this.Controls.Add(this.lbVT);
+            this.Controls.Add(this.lbDoanhThu);
             this.Controls.Add(this.dtpk);
             this.Controls.Add(this.btnVeThang);
             this.Controls.Add(this.btnAll);
@@ -195,12 +232,11 @@
             this.Controls.Add(this.btnThang);
             this.Controls.Add(this.btnTuan);
             this.Controls.Add(this.btnHN);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.lbVeThang);
+            this.Controls.Add(this.dgvTK);
             this.Name = "ucThongKe";
             this.Size = new System.Drawing.Size(1328, 811);
             this.Load += new System.EventHandler(this.ucThongKe_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTK)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -209,7 +245,7 @@
         #endregion
 
         private System.Windows.Forms.Label lbVeThang;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvTK;
         private System.Windows.Forms.Button btnHN;
         private System.Windows.Forms.Button btnTuan;
         private System.Windows.Forms.Button btnThang;
@@ -218,5 +254,8 @@
         private System.Windows.Forms.Button btnVeLuot;
         private System.Windows.Forms.Button btnAll;
         private System.Windows.Forms.DateTimePicker dtpk;
+        private System.Windows.Forms.Label lbDoanhThu;
+        private System.Windows.Forms.Label lbVT;
+        private System.Windows.Forms.Label lbVL;
     }
 }
