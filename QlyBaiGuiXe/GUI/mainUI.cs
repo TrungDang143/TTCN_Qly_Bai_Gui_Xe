@@ -157,7 +157,7 @@ namespace QlyBaiGuiXe.GUI
             resetSelect();
             pnl_btnVeXe.BackColor = System.Drawing.Color.MidnightBlue;
 
-            ucVeXe newUC = new ucVeXe();
+            ucVeXe newUC = new ucVeXe(currentNV);
             pnlMain.Controls.Add(newUC);
         }
 
