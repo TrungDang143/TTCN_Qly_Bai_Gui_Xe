@@ -14,6 +14,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.IdentityModel.Tokens;
+using QlyBaiGuiXe.GUI.DieuHuongTrang;
+using static QlyBaiGuiXe.GUI.DieuHuongTrang.UserControl1;
 
 namespace QlyBaiGuiXe.GUI
 {
@@ -22,14 +24,56 @@ namespace QlyBaiGuiXe.GUI
         BaiXeDBContext db = new BaiXeDBContext();
         NhanVien currentNV;
         HoaDon hoadon;
+        UserControl1 DieuHuongTrang;
 
+        private int tongSoTrang;
+        private int recordPerPage = 2;
+        private int trangHienTai = 1;
+        
         public ucBaiXe(NhanVien nv)
         {
             InitializeComponent();
+
             currentNV = nv;
             if (nv.MaCv == "ql")
                 groupBox3.Visible = true;
+
+            
+            int soluong = (from hd in db.HoaDon
+                              join maLX in db.LoaiXe on hd.MaLoaiXe equals maLX.MaLoaiXe
+                              join maLV in db.LoaiVe on hd.MaLoaiVe equals maLV.MaLoaiVe
+                              where (hd.TgVao >= DateTime.Now.Date) || (hd.TgRa == null)
+                              select hd).Count();
+            double soTrang = (double)soluong / recordPerPage;
+            tongSoTrang = (int)Math.Ceiling(soTrang);
+
+            DieuHuongTrang = pnlPT.Controls.Find("userControl11", true).SingleOrDefault() as UserControl1;
+            DieuHuongTrang.CreateDieuHuongTrang(tongSoTrang);
+            DieuHuongTrang.DataSent += Button_ChangePage_DataSent;
+            //DieuHuongTrang
+
             ucBaiXeLoad();
+
+            dgvBaiXe.Columns["MaVe"].HeaderText = "Mã vé";
+            dgvBaiXe.Columns["TenLoai"].HeaderText = "Loại vé";
+            dgvBaiXe.Columns["TenXe"].HeaderText = "Loại xe";
+            dgvBaiXe.Columns["BienSo"].HeaderText = "Biển số";
+            dgvBaiXe.Columns["TgVao"].HeaderText = "Thời gian nhập";
+            dgvBaiXe.Columns["TgRa"].HeaderText = "Thời gian xuất";
+            dgvBaiXe.Columns["Gia"].HeaderText = "Mức phí";
+            dgvBaiXe.Columns["nv"].HeaderText = "Nhân viên";
+
+            dgvBaiXe.Columns["MaVe"].Width = (int)Math.Round(dgvBaiXe.Width * 0.1);
+            dgvBaiXe.Columns["TenLoai"].Width = (int)Math.Round(dgvBaiXe.Width * 0.1);
+            dgvBaiXe.Columns["TenXe"].Width = (int)Math.Round(dgvBaiXe.Width * 0.1);
+            dgvBaiXe.Columns["BienSo"].Width = (int)Math.Round(dgvBaiXe.Width * 0.11);
+            dgvBaiXe.Columns["TgVao"].Width = (int)Math.Round(dgvBaiXe.Width * 0.17);
+            dgvBaiXe.Columns["TgRa"].Width = (int)Math.Round(dgvBaiXe.Width * 0.17);
+            dgvBaiXe.Columns["Gia"].Width = (int)Math.Round(dgvBaiXe.Width * 0.1);
+            dgvBaiXe.Columns["nv"].Width = (int)Math.Round(dgvBaiXe.Width * 0.097);
+
+            dgvBaiXe.ColumnHeadersDefaultCellStyle.Font = new Font(dgvBaiXe.Font, FontStyle.Bold);
+
         }
         private void LoadComboBox_LoaiVe()
         {
@@ -88,48 +132,40 @@ namespace QlyBaiGuiXe.GUI
             }
             return null;
         }
-        private void ucBaiXeLoad()
+
+        private void Button_ChangePage_DataSent(object sender, DataEventArgs e)
         {
-            
+            // Nhận dữ liệu từ UserControl C
+            int receivedData = e.Data;
+            // Xử lý dữ liệu
+            ucBaiXeLoad(receivedData);
+        }
+        public void ucBaiXeLoad(int trangHienTai = 1)
+        {
+            //pnlPT.Controls.Add();
             // load data grid view
             dgvBaiXe.AutoGenerateColumns = true;
-            var queryBaiXe = from hd in db.HoaDon
-                             join maLX in db.LoaiXe on hd.MaLoaiXe equals maLX.MaLoaiXe
-                             join maLV in db.LoaiVe on hd.MaLoaiVe equals maLV.MaLoaiVe
-                             where (hd.TgVao >= DateTime.Now.Date) || (hd.TgRa == null)
-                             orderby hd.TgRa ascending
-                             //orderby hd.TgVao descending
-                             select new
-                             {
-                                 hd.MaVe,
-                                 maLV.TenLoai,
-                                 maLX.TenXe,
-                                 hd.BienSo,
-                                 hd.TgVao,
-                                 hd.TgRa,
-                                 Gia = hd.Gia.ToString("N0"),
-                                 nv = getTenNV(hd.MaNv),
-                             };
+
+            var queryBaiXe = (from hd in db.HoaDon
+                              join maLX in db.LoaiXe on hd.MaLoaiXe equals maLX.MaLoaiXe
+                              join maLV in db.LoaiVe on hd.MaLoaiVe equals maLV.MaLoaiVe
+                              where (hd.TgVao >= DateTime.Now.Date) || (hd.TgRa == null)
+                              orderby hd.TgRa ascending
+                              //orderby hd.TgVao descending
+                              select new
+                              {
+                                  hd.MaVe,
+                                  maLV.TenLoai,
+                                  maLX.TenXe,
+                                  hd.BienSo,
+                                  hd.TgVao,
+                                  hd.TgRa,
+                                  Gia = hd.Gia.ToString("N0"),
+                                  nv = getTenNV(hd.MaNv),
+                              })
+                             .Skip((trangHienTai - 1) * recordPerPage)
+                             .Take(recordPerPage);
             dgvBaiXe.DataSource = queryBaiXe.ToList();
-            dgvBaiXe.Columns["MaVe"].HeaderText = "Mã vé";
-            dgvBaiXe.Columns["TenLoai"].HeaderText = "Loại vé";
-            dgvBaiXe.Columns["TenXe"].HeaderText = "Loại xe";
-            dgvBaiXe.Columns["BienSo"].HeaderText = "Biển số";
-            dgvBaiXe.Columns["TgVao"].HeaderText = "Thời gian nhập";
-            dgvBaiXe.Columns["TgRa"].HeaderText = "Thời gian xuất";
-            dgvBaiXe.Columns["Gia"].HeaderText = "Mức phí";
-            dgvBaiXe.Columns["nv"].HeaderText = "Nhân viên";
-
-            dgvBaiXe.Columns["MaVe"].Width = (int)Math.Round(dgvBaiXe.Width * 0.1);
-            dgvBaiXe.Columns["TenLoai"].Width = (int)Math.Round(dgvBaiXe.Width * 0.1);
-            dgvBaiXe.Columns["TenXe"].Width = (int)Math.Round(dgvBaiXe.Width * 0.1);
-            dgvBaiXe.Columns["BienSo"].Width = (int)Math.Round(dgvBaiXe.Width * 0.11);
-            dgvBaiXe.Columns["TgVao"].Width = (int)Math.Round(dgvBaiXe.Width * 0.17);
-            dgvBaiXe.Columns["TgRa"].Width = (int)Math.Round(dgvBaiXe.Width * 0.17);
-            dgvBaiXe.Columns["Gia"].Width = (int)Math.Round(dgvBaiXe.Width * 0.1);
-            dgvBaiXe.Columns["nv"].Width = (int)Math.Round(dgvBaiXe.Width * 0.097);
-
-            dgvBaiXe.ColumnHeadersDefaultCellStyle.Font = new Font(dgvBaiXe.Font, FontStyle.Bold);
 
             //dgvBaiXe.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
@@ -829,6 +865,21 @@ namespace QlyBaiGuiXe.GUI
             {
                 MessageBox.Show("Lỗi update giá vé qua đêm!\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pnlPT_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void userControl11_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

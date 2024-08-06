@@ -51,11 +51,14 @@
             this.btnBTbaiXe = new System.Windows.Forms.Button();
             this.btnBTTTve = new System.Windows.Forms.Button();
             this.lbNgay = new System.Windows.Forms.Label();
+            this.pnlPT = new System.Windows.Forms.Panel();
+            this.userControl11 = new QlyBaiGuiXe.GUI.DieuHuongTrang.UserControl1();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBaiXe)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.pnlPT.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -202,7 +205,7 @@
             this.dgvBaiXe.Name = "dgvBaiXe";
             this.dgvBaiXe.RowHeadersWidth = 51;
             this.dgvBaiXe.RowTemplate.Height = 24;
-            this.dgvBaiXe.Size = new System.Drawing.Size(1028, 567);
+            this.dgvBaiXe.Size = new System.Drawing.Size(1028, 511);
             this.dgvBaiXe.TabIndex = 2;
             this.dgvBaiXe.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBaiXe_CellClick);
             // 
@@ -305,10 +308,29 @@
             this.lbNgay.TabIndex = 5;
             this.lbNgay.Text = "Ngày: --/--/--";
             // 
+            // pnlPT
+            // 
+            this.pnlPT.Controls.Add(this.userControl11);
+            this.pnlPT.Location = new System.Drawing.Point(676, 734);
+            this.pnlPT.Name = "pnlPT";
+            this.pnlPT.Size = new System.Drawing.Size(381, 50);
+            this.pnlPT.TabIndex = 6;
+            this.pnlPT.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlPT_Paint);
+            // 
+            // userControl11
+            // 
+            this.userControl11.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.userControl11.Location = new System.Drawing.Point(3, 3);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.Size = new System.Drawing.Size(375, 45);
+            this.userControl11.TabIndex = 0;
+            this.userControl11.Load += new System.EventHandler(this.userControl11_Load_1);
+            // 
             // ucBaiXe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.pnlPT);
             this.Controls.Add(this.lbNgay);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -325,6 +347,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.pnlPT.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,5 +377,7 @@
         private System.Windows.Forms.Button btnBTTTve;
         private System.Windows.Forms.DataGridView dgvBaiXe;
         private System.Windows.Forms.Label lbNgay;
+        private System.Windows.Forms.Panel pnlPT;
+        private DieuHuongTrang.UserControl1 userControl11;
     }
 }
