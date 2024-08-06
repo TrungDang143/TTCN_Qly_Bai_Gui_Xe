@@ -244,6 +244,12 @@
     <Compile Include="GUI\DangNhap\fQuenMK_3.Designer.cs">
       <DependentUpon>fQuenMK_3.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\DieuHuongTrang\UserControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\DieuHuongTrang\UserControl1.Designer.cs">
+      <DependentUpon>UserControl1.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\mainUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -326,6 +332,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\DangNhap\fQuenMK_3.resx">
       <DependentUpon>fQuenMK_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\DieuHuongTrang\UserControl1.resx">
+      <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\mainUI.resx">
       <DependentUpon>mainUI.cs</DependentUpon>
